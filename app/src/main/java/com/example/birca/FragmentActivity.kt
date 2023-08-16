@@ -2,19 +2,27 @@ package com.example.birca
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.birca.fragment.HomeFragment
 import com.example.birca.fragment.RegisterFragment
 import com.example.birca.fragment.RentFragment
 import com.example.birca.fragment.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.kakao.sdk.common.util.Utility
 
 class FragmentActivity : AppCompatActivity() {
 
     val manager = supportFragmentManager
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment)
+
+        //keyHash 가져오기
+        var keyHash = Utility.getKeyHash(this)
+        Log.d("keyHash", keyHash)
 
         val transaction = manager.beginTransaction()
 
