@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    fun startKakaoLogin(context : Context) {
+
+    fun startKakaoLogin(context: Context) {
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 Log.e(TAG, "카카오계정으로 로그인 실패", error)
@@ -84,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getKakaoToken(kakaoToken : String) {
+    fun getKakaoToken(kakaoToken: String) {
         APIS.getKakaoToken(kakaoToken)
             .enqueue(object : Callback<GetKakaoTokenResponseModel> {
 
@@ -92,12 +93,12 @@ class MainActivity : AppCompatActivity() {
                     call: Call<GetKakaoTokenResponseModel>,
                     response: Response<GetKakaoTokenResponseModel>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
 
                         nickname = response.body()?.nickname.toString()
                         email = response.body()?.email.toString()
                         accessToken = response.body()?.accessToken.toString()
-                        refreshToken= response.body()?.refreshToken.toString()
+                        refreshToken = response.body()?.refreshToken.toString()
 
                         //정보 sharedPreference에 저장
 //                        MyApplication.preferences.setString("nickname",nickname)
@@ -105,7 +106,7 @@ class MainActivity : AppCompatActivity() {
 //                        MyApplication.preferences.setString("accessToken",accessToken)
 //                        MyApplication.preferences.setString("refreshToken",refreshToken)
 
-                        Log.d("GetKakaoTokenResponseModel" , response.body().toString())
+                        Log.d("GetKakaoTokenResponseModel", response.body().toString())
 
                         //홈 화면으로 이동
                         val intent = Intent(baseContext, FragmentActivity::class.java)

@@ -6,13 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.birca.HomeCafeListCustomDialog
 import com.example.birca.R
 import com.example.birca.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
 
-    private var _binding : FragmentHomeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     //인스턴스 선언
@@ -31,14 +32,17 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
 
-        binding.homeCalendar.setOnDateChangeListener{ view, year, month, dayOfMonth ->
+        binding.homeCalendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
 
 
-            Log.d("date", "${year}년 ${month}월 ${dayOfMonth}일")
+            val dialog = HomeCafeListCustomDialog(requireContext())
+            dialog.showDialog()
+
+            Log.d("date", "${year}년 ${month+1}월 ${dayOfMonth}일")
         }
 
         return view
