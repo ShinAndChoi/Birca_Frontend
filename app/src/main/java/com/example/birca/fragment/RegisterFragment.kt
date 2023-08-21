@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.birca.R
+import com.example.birca.databinding.FragmentRegisterBinding
 
 
 class RegisterFragment : Fragment() {
+
+    private var _binding : FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
 
     //인스턴스 선언
 //    fun newInstance() : RegisterFragment {
@@ -24,8 +28,13 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater,container,false)
+        val view = binding.root
+
+
+
+
+        return view
     }
 
 

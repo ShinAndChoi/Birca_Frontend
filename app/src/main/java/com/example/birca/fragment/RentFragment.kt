@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.birca.R
+import com.example.birca.databinding.FragmentRentBinding
 
 
 class RentFragment : Fragment() {
+
+    private var _binding : FragmentRentBinding? = null
+    private val binding get() = _binding!!
 
     //인스턴스 선언
 //    fun newInstance() : RentFragment {
@@ -23,8 +27,14 @@ class RentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rent, container, false)
+
+        _binding = FragmentRentBinding.inflate(inflater,container,false)
+
+        val view = binding.root
+
+
+
+        return view
     }
 
 

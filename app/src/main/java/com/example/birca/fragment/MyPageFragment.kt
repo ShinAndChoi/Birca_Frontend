@@ -6,19 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.birca.R
-import com.example.birca.databinding.FragmentSearchBinding
+import com.example.birca.databinding.FragmentMyPageBinding
+import com.example.birca.sharedPreference.MyApplication
 
 
-class SearchFragment : Fragment() {
+class MyPageFragment : Fragment() {
 
-    private var _binding : FragmentSearchBinding? = null
+    private var _binding: FragmentMyPageBinding? = null
     private val binding get() = _binding!!
-
-    //인스턴스 선언
-//    fun newInstance() : SearchFragment {
-//        return SearchFragment()
-//    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +25,15 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSearchBinding.inflate(inflater,container,false)
+        _binding = FragmentMyPageBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        val nickname = MyApplication.preferences.getString("nickname","")
+        val email = MyApplication.preferences.getString("email","")
+
+
+        binding.textNickname.setText(nickname)
+        binding.textEmail.setText(email)
 
 
         return view

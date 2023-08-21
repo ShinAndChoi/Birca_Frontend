@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import com.example.birca.model.GetKakaoTokenResponseModel
 import com.example.birca.retrofit.APIS
 import com.example.birca.retrofit.RetrofitInstance
+import com.example.birca.sharedPreference.MyApplication
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
@@ -35,13 +36,15 @@ class MainActivity : AppCompatActivity() {
 
         val kakaoLoginBtn = findViewById<ImageButton>(R.id.btn_kakao_login)
 
+
+        //로그인 버튼 클릭
         kakaoLoginBtn.setOnClickListener {
             startKakaoLogin(this)
         }
 
-
     }
-    fun startKakaoLogin(context : Context) {
+
+    fun startKakaoLogin(context: Context) {
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 Log.e(TAG, "카카오계정으로 로그인 실패", error)
@@ -82,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getKakaoToken(kakaoToken : String) {
+    fun getKakaoToken(kakaoToken: String) {
         APIS.getKakaoToken(kakaoToken)
             .enqueue(object : Callback<GetKakaoTokenResponseModel> {
 
@@ -90,16 +93,25 @@ class MainActivity : AppCompatActivity() {
                     call: Call<GetKakaoTokenResponseModel>,
                     response: Response<GetKakaoTokenResponseModel>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
 
                         nickname = response.body()?.nickname.toString()
                         email = response.body()?.email.toString()
                         accessToken = response.body()?.accessToken.toString()
-                        refreshToken= response.body()?.refreshToken.toString()
+                        refreshToken = response.body()?.refreshToken.toString()
 
-                        Log.d("GetKakaoTokenResponseModel" , response.body().toString())
 
+//                        정보 sharedPreference에 저장
+                        MyApplication.preferences.setString("nickname",nickname)
+                        MyApplication.preferences.setString("email",email)
+                        MyApplication.preferences.setString("accessToken",accessToken)
+                        MyApplication.preferences.setString("refreshToken",refreshToken)
+
+                        Log.d("GetKakaoTokenResponseModel", response.body().toString())
+
+                        //홈 화면으로 이동
                         val intent = Intent(baseContext, FragmentActivity::class.java)
+//
                         startActivity(intent)
                     } else {
                         Log.d("kakaoLogin", "fail 1")

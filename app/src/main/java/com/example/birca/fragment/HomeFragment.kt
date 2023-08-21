@@ -1,16 +1,20 @@
 package com.example.birca.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.birca.HomeCafeListCustomDialog
 import com.example.birca.R
-
+import com.example.birca.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
 
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     //인스턴스 선언
 //    fun newInstance() : HomeFragment {
@@ -27,8 +31,31 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        //mypage 클릭
+        binding.btnMyPage.setOnClickListener {
+            val myPage = MyPageFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,myPage)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        //달력 클릭
+        binding.homeCalendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
+
+
+            val dialog = HomeCafeListCustomDialog(requireContext())
+            dialog.showDialog()
+
+            Log.d("date", "${year}년 ${month+1}월 ${dayOfMonth}일")
+        }
+
+        return view
     }
 
 
