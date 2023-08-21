@@ -100,16 +100,18 @@ class MainActivity : AppCompatActivity() {
                         accessToken = response.body()?.accessToken.toString()
                         refreshToken = response.body()?.refreshToken.toString()
 
-                        //정보 sharedPreference에 저장
-//                        MyApplication.preferences.setString("nickname",nickname)
-//                        MyApplication.preferences.setString("email",email)
-//                        MyApplication.preferences.setString("accessToken",accessToken)
-//                        MyApplication.preferences.setString("refreshToken",refreshToken)
+
+//                        정보 sharedPreference에 저장
+                        MyApplication.preferences.setString("nickname",nickname)
+                        MyApplication.preferences.setString("email",email)
+                        MyApplication.preferences.setString("accessToken",accessToken)
+                        MyApplication.preferences.setString("refreshToken",refreshToken)
 
                         Log.d("GetKakaoTokenResponseModel", response.body().toString())
 
                         //홈 화면으로 이동
                         val intent = Intent(baseContext, FragmentActivity::class.java)
+//
                         startActivity(intent)
                     } else {
                         Log.d("kakaoLogin", "fail 1")

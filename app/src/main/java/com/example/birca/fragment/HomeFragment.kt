@@ -35,7 +35,17 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        //mypage 클릭
+        binding.btnMyPage.setOnClickListener {
+            val myPage = MyPageFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,myPage)
+                addToBackStack(null)
+                commit()
+            }
+        }
 
+        //달력 클릭
         binding.homeCalendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
 
 
