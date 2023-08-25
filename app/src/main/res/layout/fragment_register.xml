@@ -10,15 +10,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -54,6 +54,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
+                android:text="카페 장소"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/select_cafe_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/border_all"
+                android:gravity="center"
+                android:hint="장소 선택"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
                 android:text="카페 소개"
                 android:textColor="#000000"
                 android:textSize="20sp" />
@@ -75,6 +96,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
+                android:text="연락처"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edittext_cafe_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/border_all"
+                android:hint="전화번호/e-mail" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
                 android:text="카페 사진"
                 android:textColor="#000000"
                 android:textSize="20sp" />
@@ -85,9 +125,9 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:text="첨부하기"
-                android:gravity="center"
                 android:background="@drawable/border_all"
+                android:gravity="center"
+                android:text="첨부하기"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -106,9 +146,9 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:text="첨부하기"
-                android:gravity="center"
                 android:background="@drawable/border_all"
+                android:gravity="center"
+                android:text="첨부하기"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -116,13 +156,14 @@
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_marginTop="25dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="20dp"
-                android:text="등록하기"
-                android:textSize="50sp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/border_all"
                 android:gravity="center"
-                android:background="@drawable/border_all"/>
+                android:text="등록하기"
+                android:textSize="50sp" />
         </LinearLayout>
 
 
