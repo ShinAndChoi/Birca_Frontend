@@ -1,5 +1,6 @@
 package com.example.birca.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
+import com.example.birca.CafeListActivity
 import com.example.birca.R
 import com.example.birca.databinding.FragmentRentBinding
 
@@ -92,7 +94,9 @@ class RentFragment : Fragment() {
                 Toast.makeText(context, "날짜 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 //다음 페이지
-                Toast.makeText(context, "다음 페이지", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, "다음 페이지", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context,CafeListActivity::class.java )
+                startActivity(intent)
             }
 
         }
