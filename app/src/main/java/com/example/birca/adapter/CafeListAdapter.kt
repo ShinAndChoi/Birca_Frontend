@@ -14,6 +14,12 @@ class CafeListAdapter (
     private var cafeList : MutableList<cafeListResponseModel> = mutableListOf()
 ) : RecyclerView.Adapter<CafeListAdapter.ViewHolder>() {
 
+
+    fun updateList(newList : ArrayList<cafeListResponseModel>){
+        cafeList.clear()
+        cafeList.addAll(newList)
+        notifyDataSetChanged()
+    }
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
 
         var rv_item_cafelist_cafename : TextView

@@ -21,7 +21,8 @@ class SearchFragment : Fragment() {
 
     var idol = ""
     var cafe_location = ""
-    var cafe_date = ""
+    var cafe_start_date = ""
+    var cafe_end_date = ""
 
     //인스턴스 선언
 //    fun newInstance() : SearchFragment {
@@ -41,6 +42,9 @@ class SearchFragment : Fragment() {
 
         _binding = FragmentSearchBinding.inflate(inflater,container,false)
         val view = binding.root
+
+
+        binding.selectCafeDateCalendar.visibility= View.GONE
 
 
         //장소 선택
@@ -69,21 +73,42 @@ class SearchFragment : Fragment() {
 
         }
 
-        //날짜 선택
 
-        binding.selectCafeDateCalendar.setOnDateChangeListener{ view, year, month, dayOfMonth ->
+        //시작 날짜 클릭
 
-            binding.selectCafeDate.setText("${year}년 ${month+1}월 ${dayOfMonth}일")
-            cafe_date = binding.selectCafeDate.text.toString()
-            Log.d("selecteddate", "${year}년 ${month+1}월 ${dayOfMonth}일")
+        binding.selectCafeStartDate.setOnClickListener {
+            //날짜 선택
+            binding.selectCafeDateCalendar.visibility= View.VISIBLE
+
+            binding.selectCafeDateCalendar.setOnDateChangeListener{ view, year, month, dayOfMonth ->
+
+                binding.selectCafeStartDate.setText("${year}년 ${month+1}월 ${dayOfMonth}일")
+                cafe_start_date = binding.selectCafeStartDate.text.toString()
+                Log.d("selecteddate", "${year}년 ${month+1}월 ${dayOfMonth}일")
+            }
         }
+
+        //종료 날짜 클릭
+
+        binding.selectCafeEndDate.setOnClickListener {
+            //날짜 선택
+            binding.selectCafeDateCalendar.setOnDateChangeListener{ view, year, month, dayOfMonth ->
+
+                binding.selectCafeEndDate.setText("${year}년 ${month+1}월 ${dayOfMonth}일")
+                cafe_end_date = binding.selectCafeEndDate.text.toString()
+                Log.d("selecteddate", "${year}년 ${month+1}월 ${dayOfMonth}일")
+            }
+        }
+
+
 
         //검색 버튼
         binding.btnSearch.setOnClickListener {
 
             idol = binding.textIdol.text.toString()
             cafe_location = binding.selectCafeLocation.text.toString()
-            cafe_date = binding.selectCafeDate.text.toString()
+            cafe_start_date = binding.selectCafeStartDate.text.toString()
+            cafe_end_date = binding.selectCafeEndDate.text.toString()
 
             Log.d("click", "click")
           if(idol==""){
@@ -92,6 +117,10 @@ class SearchFragment : Fragment() {
               //다음 페이지
 //              Toast.makeText(context, "다음 페이지", Toast.LENGTH_SHORT).show()
               val intent = Intent(context, CafeListActivity::class.java )
+              intent.putExtra("idol",idol)
+              intent.putExtra("cafe_location",cafe_location)
+              intent.putExtra("cafe_start_date",cafe_start_date)
+              intent.putExtra("cafe_end_date",cafe_end_date)
               startActivity(intent)
           }
 

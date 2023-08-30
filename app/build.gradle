@@ -19,8 +19,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-    buildConfigField "String", "KAKAO_NATIVE_APP_KEY",properties['kakao_native_app_key']
-    resValue "string", "kakao_oauth_host",properties['kako_oauth_host']
+        buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties['kakao_native_app_key']
+        resValue "string", "kakao_oauth_host", properties['kako_oauth_host']
     }
 
     buildTypes {
@@ -28,9 +28,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    buildFeatures {
-        viewBinding true
-    }
+
+
 
     }
     compileOptions {
@@ -39,6 +38,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    buildFeatures{
+        dataBinding true
     }
 }
 
@@ -51,6 +56,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
 
     //kakao
     implementation "com.kakao.sdk:v2-all:2.15.0" // 전체 모듈 설치, 2.11.0 버전부터 지원
