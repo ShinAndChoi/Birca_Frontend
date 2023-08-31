@@ -20,10 +20,17 @@ interface APIS {
 
     //카페 검색
     @GET("cafes")
-    fun getCafeList (
+    fun getCafeListSearch (
         @Header("Authorization") Authorization : String,
-        @Query("page") page: Int,
-        @Body CafeListRequestModel : CafeListRequestModel
+        @Query("page") page : Int,
+        @Query("CafeListRequestModel") CafeListRequestModel : CafeListRequestModel
+    ) : Call<ArrayList<cafeListResponseModel>>
+
+    //홈 캘린더 클릭
+    @GET("cafes/reserved-on")
+    fun getCafeListCalendar (
+        @Header("Authorization") Authorization : String,
+        @Query("selectedDate") selectedDate : String
     ) : Call<ArrayList<cafeListResponseModel>>
 
 

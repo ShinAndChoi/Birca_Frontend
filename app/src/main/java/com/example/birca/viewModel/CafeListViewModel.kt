@@ -22,36 +22,69 @@ class CafeListViewModel:ViewModel() {
     private var _cafeList = MutableLiveData<ArrayList<cafeListResponseModel>>()
     var cafeList : LiveData<ArrayList<cafeListResponseModel>> = _cafeList
 
-
-    fun getCafeList(searchInfo : CafeListRequestModel) {
+    //검색 카페 리스트
+    fun getCafeListSearch(searchInfo : CafeListRequestModel) {
         API = RetrofitInstance.retrofitInstance().create(APIS::class.java)
 
         val accessToken = MyApplication.preferences.getString("accessToken", "")
 
         viewModelScope.launch {
             try{
-                API.getCafeList(accessToken,1,searchInfo).enqueue(
+                API.getCafeListSearch(accessToken,0,searchInfo).enqueue(
                     object : Callback<ArrayList<cafeListResponseModel>> {
 
                     override fun onResponse(call: Call<ArrayList<cafeListResponseModel>>, response: Response<ArrayList<cafeListResponseModel>>) {
                         if (response.isSuccessful) {
 
-                            Log.d("cafeListResponseModel : " , response.body().toString())
+                            _cafeList.value = response.body()
+                            Log.d("cafeListResponseModel : " , " success , ${response.body().toString()}")
                         } else {
 
-                            Log.d("cafeListResponseModel Response : ", "Fail 1")
+                            Log.d("cafeListResponseModel Response : ", "fail 1 ,${searchInfo.toString()} ${response.body().toString()} , ${response.message()}, ${response.errorBody().toString()}")
                         }
                     }
 
                     override fun onFailure(call: Call<ArrayList<cafeListResponseModel>>, t: Throwable) {
-                        Log.d("cafeListResponseModel Response : ", t.message.toString())
+                        Log.d("cafeListResponseModel Response : ", " fail 2 , ${t.message.toString()}")
                     }
                 })
             } catch (e:Exception) {
-                Log.d("cafeListResponseModel response : ", "Fail 3")
+                Log.d("cafeListResponseModel response : ", " fail 3 , ${e.message}")
             }
         }
 
+    }
+
+    //캘린더 카페 리스트
+    fun getCafeListCalendar(selectedDate : String) {
+        API = RetrofitInstance.retrofitInstance().create(APIS::class.java)
+
+        val accessToken = MyApplication.preferences.getString("accessToken", "")
+
+        viewModelScope.launch {
+            try{
+                API.getCafeListCalendar(accessToken,selectedDate).enqueue(
+                    object : Callback<ArrayList<cafeListResponseModel>> {
+
+                        override fun onResponse(call: Call<ArrayList<cafeListResponseModel>>, response: Response<ArrayList<cafeListResponseModel>>) {
+                            if (response.isSuccessful) {
+
+                                _cafeList.value = response.body()
+                                Log.d("cafeListResponseModel : " , " success , ${response.body().toString()}")
+                            } else {
+
+                                Log.d("cafeListResponseModel Response : ", "fail 1 ,${selectedDate.toString()} ${response.body().toString()} , ${response.message()}, ${response.errorBody().toString()}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ArrayList<cafeListResponseModel>>, t: Throwable) {
+                            Log.d("cafeListResponseModel Response : ", " fail 2 , ${t.message.toString()}")
+                        }
+                    })
+            } catch (e:Exception) {
+                Log.d("cafeListResponseModel response : ", " fail 3 , ${e.message}")
+            }
+        }
     }
 }
 

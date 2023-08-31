@@ -61,7 +61,7 @@ class SearchFragment : Fragment() {
             pop.setOnMenuItemClickListener { item->
                 when(item.itemId){
                     R.id.hongdae_sinchon ->
-                        binding.selectCafeLocation.setText("홍대/신촌")
+                        binding.selectCafeLocation.setText("홍대")
                     R.id.seongsu_gundae ->
                         binding.selectCafeLocation.setText("성수/건대")
                     R.id.gangnam ->
@@ -82,9 +82,18 @@ class SearchFragment : Fragment() {
 
             binding.selectCafeDateCalendar.setOnDateChangeListener{ view, year, month, dayOfMonth ->
 
-                binding.selectCafeStartDate.setText("${year}년 ${month+1}월 ${dayOfMonth}일")
+                var realMonth = "${month+1}"
+                var realDayOfMonth = "${dayOfMonth}"
+                var date = ""
+                if(month+1<10) {
+                     realMonth ="0${month+1}"
+                }
+                if (dayOfMonth<10) {
+                     realDayOfMonth = "0$dayOfMonth"
+                }
+                binding.selectCafeStartDate.setText("${year}-${realMonth}-${realDayOfMonth}")
                 cafe_start_date = binding.selectCafeStartDate.text.toString()
-                Log.d("selecteddate", "${year}년 ${month+1}월 ${dayOfMonth}일")
+                Log.d("selecteddate", "${year}-${realMonth}-${realDayOfMonth}")
             }
         }
 
@@ -94,9 +103,17 @@ class SearchFragment : Fragment() {
             //날짜 선택
             binding.selectCafeDateCalendar.setOnDateChangeListener{ view, year, month, dayOfMonth ->
 
-                binding.selectCafeEndDate.setText("${year}년 ${month+1}월 ${dayOfMonth}일")
+                var realMonth = "${month+1}"
+                var realDayOfMonth = "${dayOfMonth}"
+                if(month+1<10) {
+                     realMonth ="0${month+1}"
+                }
+                if (dayOfMonth<10) {
+                     realDayOfMonth = "0$dayOfMonth"
+                }
+                binding.selectCafeEndDate.setText("${year}-${realMonth}-${realDayOfMonth}")
                 cafe_end_date = binding.selectCafeEndDate.text.toString()
-                Log.d("selecteddate", "${year}년 ${month+1}월 ${dayOfMonth}일")
+                Log.d("selecteddate", "${year}-${realMonth}-${realDayOfMonth}")
             }
         }
 

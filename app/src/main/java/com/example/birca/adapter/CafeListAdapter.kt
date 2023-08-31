@@ -11,7 +11,7 @@ import com.example.birca.model.cafeListResponseModel
 import org.w3c.dom.Text
 
 class CafeListAdapter (
-    private var cafeList : MutableList<cafeListResponseModel> = mutableListOf()
+    private var cafeList : ArrayList<cafeListResponseModel>
 ) : RecyclerView.Adapter<CafeListAdapter.ViewHolder>() {
 
 
