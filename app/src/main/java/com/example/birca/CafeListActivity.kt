@@ -39,12 +39,12 @@ class CafeListActivity : AppCompatActivity() {
 
 
         //view 모델에 넘겨줄 query
-        val cafeList = CafeListRequestModel(
-            idol,
-            cafe_start_date,
-            cafe_end_date,
-            cafe_location,
-        )
+//        val cafeList = CafeListRequestModel(
+//            idol,
+//            cafe_start_date,
+//            cafe_end_date,
+//            cafe_location,
+//        )
 
 
         Log.d("search info", "$idol $cafe_location $cafe_start_date $cafe_end_date" )
@@ -68,7 +68,7 @@ class CafeListActivity : AppCompatActivity() {
 
         //카페 리스트 호출
         viewModel.getCafeListSearch(
-            cafeList
+            cafe_location, idol,cafe_start_date,cafe_end_date
         )
 
 

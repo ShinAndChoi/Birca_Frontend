@@ -23,7 +23,10 @@ interface APIS {
     fun getCafeListSearch (
         @Header("Authorization") Authorization : String,
         @Query("page") page : Int,
-        @Query("CafeListRequestModel") CafeListRequestModel : CafeListRequestModel
+        @Query("address") address : String,
+        @Query("idolName") idolName : String,
+        @Query("startDate") startDate : String,
+        @Query("endDate") endDate : String,
     ) : Call<ArrayList<cafeListResponseModel>>
 
     //홈 캘린더 클릭

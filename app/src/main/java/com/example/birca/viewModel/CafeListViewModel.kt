@@ -23,14 +23,14 @@ class CafeListViewModel:ViewModel() {
     var cafeList : LiveData<ArrayList<cafeListResponseModel>> = _cafeList
 
     //검색 카페 리스트
-    fun getCafeListSearch(searchInfo : CafeListRequestModel) {
+    fun getCafeListSearch(address : String, idolName : String, startDate :String, endDate : String) {
         API = RetrofitInstance.retrofitInstance().create(APIS::class.java)
 
         val accessToken = MyApplication.preferences.getString("accessToken", "")
 
         viewModelScope.launch {
             try{
-                API.getCafeListSearch(accessToken,0,searchInfo).enqueue(
+                API.getCafeListSearch(accessToken,0,address, idolName, startDate, endDate).enqueue(
                     object : Callback<ArrayList<cafeListResponseModel>> {
 
                     override fun onResponse(call: Call<ArrayList<cafeListResponseModel>>, response: Response<ArrayList<cafeListResponseModel>>) {
@@ -40,7 +40,7 @@ class CafeListViewModel:ViewModel() {
                             Log.d("cafeListResponseModel : " , " success , ${response.body().toString()}")
                         } else {
 
-                            Log.d("cafeListResponseModel Response : ", "fail 1 ,${searchInfo.toString()} ${response.body().toString()} , ${response.message()}, ${response.errorBody().toString()}")
+                            Log.d("cafeListResponseModel Response : ", "fail 1 , ${response.body().toString()} , ${response.message()}, ${response.errorBody().toString()}")
                         }
                     }
 

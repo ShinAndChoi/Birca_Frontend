@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.birca.CafeListActivity
 import com.example.birca.R
 import com.example.birca.databinding.FragmentSearchBinding
@@ -57,6 +58,7 @@ class SearchFragment : Fragment() {
             pop.menuInflater?.inflate(R.menu.cafe_loaction_list,pop.menu)
 
             pop.show()
+
 
             pop.setOnMenuItemClickListener { item->
                 when(item.itemId){
