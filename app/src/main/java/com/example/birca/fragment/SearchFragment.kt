@@ -63,7 +63,7 @@ class SearchFragment : Fragment() {
             pop.setOnMenuItemClickListener { item->
                 when(item.itemId){
                     R.id.hongdae_sinchon ->
-                        binding.selectCafeLocation.setText("홍대")
+                        binding.selectCafeLocation.setText("홍")
                     R.id.seongsu_gundae ->
                         binding.selectCafeLocation.setText("성수/건대")
                     R.id.gangnam ->
