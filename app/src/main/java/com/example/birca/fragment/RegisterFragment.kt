@@ -10,6 +10,7 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import com.example.birca.R
 import com.example.birca.databinding.FragmentRegisterBinding
+import com.example.birca.model.cafeRegisterInfoBody
 
 
 class RegisterFragment : Fragment() {
@@ -20,9 +21,11 @@ class RegisterFragment : Fragment() {
     var cafe_name = ""
     var cafe_location = ""
     var cafe_introduction = ""
-    var cafe_file = ""
+    var cafe_image = ""
+    var cafe_businessLicense = ""
     var cafe_contact =""
 
+//    var registerInfo = cafeRegisterInfoBody(cafe_name,cafe_introduction,cafe_location,cafe_contact)
     //인스턴스 선언
 //    fun newInstance() : RegisterFragment {
 //        return RegisterFragment()
@@ -80,6 +83,7 @@ class RegisterFragment : Fragment() {
 
 
 
+
             if (cafe_name=="") {
                 Toast.makeText(context,"카페이름을 입력해주세요",Toast.LENGTH_SHORT).show()
             } else if( cafe_location =="") {
@@ -89,7 +93,10 @@ class RegisterFragment : Fragment() {
             } else if( cafe_contact=="") {
                 Toast.makeText(context,"카페연락처를 입력해주세요",Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(context,"다음페이지 이동",Toast.LENGTH_SHORT).show()
+                //통신하기
+
+                //body에 담기
+                var registerInfo = cafeRegisterInfoBody(cafe_name,cafe_introduction,cafe_location,cafe_contact)
             }
         }
         return view
