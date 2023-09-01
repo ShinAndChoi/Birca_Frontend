@@ -3,11 +3,15 @@ package com.example.birca.retrofit
 import com.example.birca.model.CafeListRequestModel
 import com.example.birca.model.GetKakaoTokenResponseModel
 import com.example.birca.model.cafeListResponseModel
+import com.example.birca.model.cafeRegisterInfoBody
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Query
 
 interface APIS {
@@ -35,6 +39,17 @@ interface APIS {
         @Header("Authorization") Authorization : String,
         @Query("selectedDate") selectedDate : String
     ) : Call<ArrayList<cafeListResponseModel>>
+
+    //카페 등록
+    @Multipart
+    @POST("cafe/register")
+    fun postRegisterCafe(
+        @Header("Authorization") Authorization : String,
+        @Part("cafeRegisterInfo") cafeRegisterInfo : cafeRegisterInfoBody,
+        @Part businessLicense  : List<MultipartBody.Part>,
+        @Part cafeImageFile : List<MultipartBody.Part>,
+    )
+
 
 
 }
