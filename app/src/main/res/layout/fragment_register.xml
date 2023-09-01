@@ -85,8 +85,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/border_all"
-                android:gravity="top"
-                android:hint="연락처(email/contact number)를 포함하여 작성해주세요" />
+                android:gravity="top" />
 
 
             <TextView
