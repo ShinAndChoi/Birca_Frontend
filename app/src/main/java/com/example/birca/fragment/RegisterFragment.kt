@@ -15,7 +15,6 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-
 import com.example.birca.R
 import com.example.birca.databinding.FragmentRegisterBinding
 import com.example.birca.model.cafeRegisterInfoBody
@@ -24,7 +23,7 @@ import com.example.birca.model.cafeRegisterInfoBody
 class RegisterFragment : Fragment() {
 
     //권한 요청 코드
-    private val REQUEST_PERMISSION_CODE = 123
+    private val REQUEST_PERMISSION_CODE = 1000
 
     private var PICK_IMAGE_REQUEST = 1
 
@@ -88,21 +87,28 @@ class RegisterFragment : Fragment() {
 
         //카페 사진 클릭
         binding.btnCafeImage.setOnClickListener {
+
+            Log.d("btnCafeImage", "click")
+
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
                     android.Manifest.permission.READ_EXTERNAL_STORAGE
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
+                Log.d("btnCafeImage", "requestPermission")
                 requestPermission()
             } else {
+                Log.d("btnCafeImage", "openGallery")
                 // 이미 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
                 PICK_IMAGE_REQUEST = 2
                 openGallery()
             }
+
+            Log.d("btnCafeImage", "nothing")
         }
 
         //사업자등록증 클릭
-        binding.btnCafeImage.setOnClickListener {
+        binding.btnBusinessLicense.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
                     android.Manifest.permission.READ_EXTERNAL_STORAGE
@@ -182,12 +188,16 @@ class RegisterFragment : Fragment() {
                 requireActivity(),
                 android.Manifest.permission.READ_EXTERNAL_STORAGE
             )
-        ) {
+        ){
+
+        }
+        else{
             // 권한 요청
+            Log.d("requestPermission", "requestPermission")
             requestPermissions(
                 arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                REQUEST_PERMISSION_CODE
-            )
+                REQUEST_PERMISSION_CODE)
+//
         }
     }
 
@@ -202,6 +212,7 @@ class RegisterFragment : Fragment() {
                 openGallery()
             } else {
                 // 권한이 거부된 경우 사용자에게 알림을 표시하거나 다른 조치를 취할 수 있습니다.
+                Toast.makeText(requireContext(),"권한 거부",Toast.LENGTH_SHORT).show()
             }
         }
     }
