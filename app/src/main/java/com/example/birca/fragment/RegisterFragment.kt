@@ -27,7 +27,7 @@ class RegisterFragment : Fragment() {
 
     private var PICK_IMAGE_REQUEST = 1
 
-    private var _binding : FragmentRegisterBinding? = null
+    private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
     var cafe_name = ""
@@ -35,7 +35,7 @@ class RegisterFragment : Fragment() {
     var cafe_introduction = ""
     var cafe_image_URI = ""
     var cafe_businessLicense_URI = ""
-    var cafe_contact =""
+    var cafe_contact = ""
 
 //    var registerInfo = cafeRegisterInfoBody(cafe_name,cafe_introduction,cafe_location,cafe_contact)
     //인스턴스 선언
@@ -52,26 +52,21 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentRegisterBinding.inflate(inflater,container,false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         val view = binding.root
-
-
-
-
-
         //장소 선택
         binding.selectCafeLocation.setOnClickListener {
 
             val popupBase = binding.selectCafeLocation
 
-            var pop = PopupMenu(context,popupBase)
+            var pop = PopupMenu(context, popupBase)
 
-            pop.menuInflater?.inflate(R.menu.cafe_loaction_list,pop.menu)
+            pop.menuInflater?.inflate(R.menu.cafe_loaction_list, pop.menu)
 
             pop.show()
 
-            pop.setOnMenuItemClickListener { item->
-                when(item.itemId){
+            pop.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
                     R.id.hongdae_sinchon ->
                         binding.selectCafeLocation.setText("홍대/신촌")
                     R.id.seongsu_gundae ->
@@ -100,7 +95,6 @@ class RegisterFragment : Fragment() {
             } else {
                 Log.d("btnCafeImage", "openGallery")
                 // 이미 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
-                PICK_IMAGE_REQUEST = 2
                 openGallery()
             }
 
@@ -108,19 +102,19 @@ class RegisterFragment : Fragment() {
         }
 
         //사업자등록증 클릭
-        binding.btnBusinessLicense.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                requestPermission()
-            } else {
-                // 이미 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
-                PICK_IMAGE_REQUEST = 3
-                openGallery()
-            }
-        }
+//        binding.btnBusinessLicense.setOnClickListener {
+//            if (ContextCompat.checkSelfPermission(
+//                    requireContext(),
+//                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+//                ) != PackageManager.PERMISSION_GRANTED
+//            ) {
+//                requestPermission()
+//            } else {
+//                // 이미 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
+//                PICK_IMAGE_REQUEST = 3
+//                openGallery()
+//            }
+//        }
 
         //등록 버튼
         binding.btnRegister.setOnClickListener {
@@ -133,24 +127,29 @@ class RegisterFragment : Fragment() {
 
 
 
-            if (cafe_name=="") {
-                Toast.makeText(context,"카페이름을 입력해주세요",Toast.LENGTH_SHORT).show()
-            } else if( cafe_location =="") {
-                Toast.makeText(context,"카페장소를 입력해주세요",Toast.LENGTH_SHORT).show()
-            } else if(cafe_introduction=="") {
-                Toast.makeText(context,"카페정보를 입력해주세요",Toast.LENGTH_SHORT).show()
-            } else if( cafe_contact=="") {
-                Toast.makeText(context,"카페연락처를 입력해주세요",Toast.LENGTH_SHORT).show()
+            if (cafe_name == "") {
+                Toast.makeText(context, "카페이름을 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else if (cafe_location == "") {
+                Toast.makeText(context, "카페장소를 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else if (cafe_introduction == "") {
+                Toast.makeText(context, "카페정보를 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else if (cafe_contact == "") {
+                Toast.makeText(context, "카페연락처를 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 //통신하기
 
 
                 //body에 담기
-                var registerInfo = cafeRegisterInfoBody(cafe_name,cafe_introduction,cafe_location,cafe_contact)
+                var registerInfo =
+                    cafeRegisterInfoBody(cafe_name, cafe_introduction, cafe_location, cafe_contact)
             }
         }
+
+
         return view
     }
+
+
 
 
     // 갤러리를 여는 함수
@@ -167,19 +166,13 @@ class RegisterFragment : Fragment() {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
             val selectedImageUri = data.data
             // 이제 selectedImageUri를 사용하여 선택한 이미지의 URI를 처리할 수 있습니다.
-            if(PICK_IMAGE_REQUEST == 2) {
-                //카페 이미지 클릭시
-                //glide로 imageview 적용
-                Glide.with(requireContext())
-                    .load(selectedImageUri)
-                    .into(binding.btnCafeImage)
-            } else if ( PICK_IMAGE_REQUEST ==3) {
-                //사업자 등록증 클릭시
-                //glide로 imageview 적용
-                Glide.with(requireContext())
-                    .load(selectedImageUri)
-                    .into(binding.btnBusinessLicense)
-            }
+
+            //카페 이미지 클릭시
+            //glide로 imageview 적용
+            Glide.with(requireContext())
+                .load(selectedImageUri)
+                .into(binding.btnCafeImage)
+
         }
     }
 
@@ -188,16 +181,19 @@ class RegisterFragment : Fragment() {
                 requireActivity(),
                 android.Manifest.permission.READ_EXTERNAL_STORAGE
             )
-        ){
+        ) {
 
-        }
-        else{
+        } else {
             // 권한 요청
             Log.d("requestPermission", "requestPermission")
             requestPermissions(
                 arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                REQUEST_PERMISSION_CODE)
-//
+                REQUEST_PERMISSION_CODE
+            )
+
+
+
+
         }
     }
 
@@ -212,7 +208,7 @@ class RegisterFragment : Fragment() {
                 openGallery()
             } else {
                 // 권한이 거부된 경우 사용자에게 알림을 표시하거나 다른 조치를 취할 수 있습니다.
-                Toast.makeText(requireContext(),"권한 거부",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "권한 거부", Toast.LENGTH_SHORT).show()
             }
         }
     }
