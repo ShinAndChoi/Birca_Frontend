@@ -18,7 +18,7 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.birca.R
 import com.example.birca.databinding.FragmentRegisterBinding
-import com.example.birca.model.cafeRegisterInfoBody
+
 
 
 class RegisterFragment : Fragment() {
@@ -31,12 +31,12 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
-    var cafe_name = ""
-    var cafe_location = ""
-    var cafe_introduction = ""
+    var cafeName = ""
+    var address = ""
+    var introduction = ""
     var cafe_image_URI = ""
     var cafe_businessLicense_URI = ""
-    var cafe_contact = ""
+    var contact = ""
 
 //    var registerInfo = cafeRegisterInfoBody(cafe_name,cafe_introduction,cafe_location,cafe_contact)
     //인스턴스 선언
@@ -79,7 +79,7 @@ class RegisterFragment : Fragment() {
                 false
             }
 
-            Log.d("cafe_location", cafe_location)
+            Log.d("cafe_location", address)
         }
 
         //카페 사진 클릭
@@ -107,22 +107,7 @@ class RegisterFragment : Fragment() {
                 }
             }
 
-//            Log.d("btnCafeImage", "click")
-//
-//            if (ContextCompat.checkSelfPermission(
-//                    requireContext(),
-//                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-//                ) != PackageManager.PERMISSION_GRANTED
-//            ) {
-//                Log.d("btnCafeImage", "requestPermission")
-//                requestPermission()
-//            } else {
-//                Log.d("btnCafeImage", "openGallery")
-//                // 이미 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
-//                openGallery()
-//            }
-//
-//            Log.d("btnCafeImage", "nothing")
+
         }
 
         //사업자등록증 클릭
@@ -149,45 +134,35 @@ class RegisterFragment : Fragment() {
                     requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),1000)
                 }
             }
-//            if (ContextCompat.checkSelfPermission(
-//                    requireContext(),
-//                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-//                ) != PackageManager.PERMISSION_GRANTED
-//            ) {
-//                requestPermission()
-//            } else {
-//                // 이미 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
-//                PICK_IMAGE_REQUEST = 3
-//                openGallery()
-//            }
+
         }
 
         //등록 버튼
         binding.btnRegister.setOnClickListener {
 
-            cafe_name = binding.edittextCafeName.text.toString()
-            cafe_location = binding.selectCafeLocation.text.toString()
-            cafe_introduction = binding.edittextCafeInfo.text.toString()
-            cafe_contact = binding.edittextCafeContact.text.toString()
+            cafeName = binding.edittextCafeName.text.toString()
+            address = binding.selectCafeLocation.text.toString()
+            introduction = binding.edittextCafeInfo.text.toString()
+            contact = binding.edittextCafeContact.text.toString()
 
 
 
 
-            if (cafe_name == "") {
+            if (cafeName == "") {
                 Toast.makeText(context, "카페이름을 입력해주세요", Toast.LENGTH_SHORT).show()
-            } else if (cafe_location == "") {
+            } else if (address == "") {
                 Toast.makeText(context, "카페장소를 입력해주세요", Toast.LENGTH_SHORT).show()
-            } else if (cafe_introduction == "") {
+            } else if (introduction == "") {
                 Toast.makeText(context, "카페정보를 입력해주세요", Toast.LENGTH_SHORT).show()
-            } else if (cafe_contact == "") {
+            } else if (contact == "") {
                 Toast.makeText(context, "카페연락처를 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 //통신하기
 
 
-                //body에 담기
-                var registerInfo =
-                    cafeRegisterInfoBody(cafe_name, cafe_introduction, cafe_location, cafe_contact)
+
+
+
             }
         }
 
@@ -231,16 +206,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
-//    private fun requestPermission() {
-//        if (shouldShowRequestPermissionRationale(
-//                android.Manifest.permission.READ_EXTERNAL_STORAGE
-//            )
-//        ) {
-//
-//
-//            showPermissionContextPopup()
-//        }
-//    }
+
 
     private fun showPermissionContextPopup() {
         Log.d("showPermissionContextPopup", "showPermissionContextPopup2")
@@ -277,22 +243,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
-//    override fun onRequestPermissionsResult(
-//        requestCode: Int,
-//        permissions: Array<out String>,
-//        grantResults: IntArray
-//    ) {
-//        if (requestCode == REQUEST_PERMISSION_CODE) {
-//            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                // 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
-//                openGallery()
-//                Log.d("openGallery???","openGallery???")
-//            } else {
-//                // 권한이 거부된 경우 사용자에게 알림을 표시하거나 다른 조치를 취할 수 있습니다.
-//                Toast.makeText(requireContext(), "권한 거부", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//    }
+
 
 
 }

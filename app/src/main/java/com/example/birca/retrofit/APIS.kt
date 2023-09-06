@@ -3,7 +3,6 @@ package com.example.birca.retrofit
 import com.example.birca.model.CafeListRequestModel
 import com.example.birca.model.GetKakaoTokenResponseModel
 import com.example.birca.model.cafeListResponseModel
-import com.example.birca.model.cafeRegisterInfoBody
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -45,9 +44,12 @@ interface APIS {
     @POST("cafe/register")
     fun postRegisterCafe(
         @Header("Authorization") Authorization : String,
-        @Part("cafeRegisterInfo") cafeRegisterInfo : cafeRegisterInfoBody,
+        @Part("cafeName") cafeName : String,
+        @Part("introduction") introduction : String,
+        @Part("address") address : String,
+        @Part("contact") contact : String,
         @Part businessLicense  : List<MultipartBody.Part>,
-        @Part cafeImageFile : List<MultipartBody.Part>,
+        @Part cafeImages : List<MultipartBody.Part>,
     )
 
 
