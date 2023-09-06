@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -45,6 +46,7 @@ class RegisterFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
@@ -83,26 +85,70 @@ class RegisterFragment : Fragment() {
         //카페 사진 클릭
         binding.btnCafeImage.setOnClickListener {
 
-            Log.d("btnCafeImage", "click")
+            when{
+                ContextCompat.checkSelfPermission(requireContext(),
+                android.Manifest.permission.READ_EXTERNAL_STORAGE) ==PackageManager.PERMISSION_GRANTED ->{
+                    //접근 권한 허용 된 경우
+                    Log.d("checkSelfPermission", "openGallery")
+                    PICK_IMAGE_REQUEST = 3
+                    openGallery()
+                }
 
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                Log.d("btnCafeImage", "requestPermission")
-                requestPermission()
-            } else {
-                Log.d("btnCafeImage", "openGallery")
-                // 이미 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
-                openGallery()
+                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE) -> {
+
+                    Log.d("checkSelfPermission", "showPermissionContextPopup1")
+                    //접근 권한 허용 필요
+                    showPermissionContextPopup()
+                }
+
+                else -> {
+                    Log.d("checkSelfPermission", "else")
+                    requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),1000)
+                }
             }
 
-            Log.d("btnCafeImage", "nothing")
+//            Log.d("btnCafeImage", "click")
+//
+//            if (ContextCompat.checkSelfPermission(
+//                    requireContext(),
+//                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+//                ) != PackageManager.PERMISSION_GRANTED
+//            ) {
+//                Log.d("btnCafeImage", "requestPermission")
+//                requestPermission()
+//            } else {
+//                Log.d("btnCafeImage", "openGallery")
+//                // 이미 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
+//                openGallery()
+//            }
+//
+//            Log.d("btnCafeImage", "nothing")
         }
 
         //사업자등록증 클릭
-//        binding.btnBusinessLicense.setOnClickListener {
+        binding.btnBusinessLicense.setOnClickListener {
+
+            when{
+                ContextCompat.checkSelfPermission(requireContext(),
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE) ==PackageManager.PERMISSION_GRANTED ->{
+                    //접근 권한 허용 된 경우
+                    Log.d("checkSelfPermission", "openGallery")
+                    PICK_IMAGE_REQUEST = 4
+                    openGallery()
+                }
+
+                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE) -> {
+
+                    Log.d("checkSelfPermission", "showPermissionContextPopup1")
+                    //접근 권한 허용 필요
+                    showPermissionContextPopup()
+                }
+
+                else -> {
+                    Log.d("checkSelfPermission", "else")
+                    requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),1000)
+                }
+            }
 //            if (ContextCompat.checkSelfPermission(
 //                    requireContext(),
 //                    android.Manifest.permission.READ_EXTERNAL_STORAGE
@@ -114,7 +160,7 @@ class RegisterFragment : Fragment() {
 //                PICK_IMAGE_REQUEST = 3
 //                openGallery()
 //            }
-//        }
+        }
 
         //등록 버튼
         binding.btnRegister.setOnClickListener {
@@ -169,32 +215,44 @@ class RegisterFragment : Fragment() {
 
             //카페 이미지 클릭시
             //glide로 imageview 적용
-            Glide.with(requireContext())
-                .load(selectedImageUri)
-                .into(binding.btnCafeImage)
+            if(PICK_IMAGE_REQUEST==3) {
+                Glide.with(requireContext())
+                    .load(selectedImageUri)
+                    .into(binding.btnCafeImage)
+            }
+
+            if(PICK_IMAGE_REQUEST==4) {
+                Glide.with(requireContext())
+                    .load(selectedImageUri)
+                    .into(binding.btnBusinessLicense)
+            }
+
 
         }
     }
 
-    private fun requestPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(
-                requireActivity(),
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
-            )
-        ) {
+//    private fun requestPermission() {
+//        if (shouldShowRequestPermissionRationale(
+//                android.Manifest.permission.READ_EXTERNAL_STORAGE
+//            )
+//        ) {
+//
+//
+//            showPermissionContextPopup()
+//        }
+//    }
 
-        } else {
-            // 권한 요청
-            Log.d("requestPermission", "requestPermission")
-            requestPermissions(
-                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                REQUEST_PERMISSION_CODE
-            )
-
-
-
-
-        }
+    private fun showPermissionContextPopup() {
+        Log.d("showPermissionContextPopup", "showPermissionContextPopup2")
+        AlertDialog.Builder(requireContext())
+            .setTitle("권한이 필요합니다")
+            .setMessage("사진을 선택하려면 권한이 필요합니다.")
+            .setPositiveButton("동의하기", {_, _ ->
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),1000)
+            })
+            .setNegativeButton("취소하기",{ _,_ ->})
+            .create()
+            .show()
     }
 
     override fun onRequestPermissionsResult(
@@ -202,16 +260,39 @@ class RegisterFragment : Fragment() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (requestCode == REQUEST_PERMISSION_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
-                openGallery()
-            } else {
-                // 권한이 거부된 경우 사용자에게 알림을 표시하거나 다른 조치를 취할 수 있습니다.
-                Toast.makeText(requireContext(), "권한 거부", Toast.LENGTH_SHORT).show()
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when(requestCode) {
+            1000-> {
+                if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //권한 허용 클릭
+                    openGallery()
+                } else {
+                    //권한 거부 클릭
+                    Toast.makeText(requireContext(),"권한을 거부하셨습니다.",Toast.LENGTH_SHORT).show()
+                }
+            } else -> {
+                Toast.makeText(requireContext(),"request code nothing",Toast.LENGTH_SHORT).show()
             }
         }
     }
+
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<out String>,
+//        grantResults: IntArray
+//    ) {
+//        if (requestCode == REQUEST_PERMISSION_CODE) {
+//            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                // 권한이 부여된 경우 갤러리 열기 또는 다른 작업 수행
+//                openGallery()
+//                Log.d("openGallery???","openGallery???")
+//            } else {
+//                // 권한이 거부된 경우 사용자에게 알림을 표시하거나 다른 조치를 취할 수 있습니다.
+//                Toast.makeText(requireContext(), "권한 거부", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//    }
 
 
 }
