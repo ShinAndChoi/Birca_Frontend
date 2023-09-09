@@ -41,17 +41,44 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/border_all"
         android:gravity="center"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp">
+
 
     <TextView
-        android:id="@+id/select_cafe_date"
-        android:layout_width="match_parent"
+        android:id="@+id/select_cafe_start_date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="날짜 선택"
+        android:text="시작 날짜 선택"
         android:textSize="20sp"
+        android:background="@drawable/border_all"
+        android:layout_weight="1"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
         android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="~"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/select_cafe_end_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="종료 날짜 선택"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:background="@drawable/border_all"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"/>
+
+</LinearLayout>
+
 
     <CalendarView
         android:id="@+id/select_cafe_date_calendar"

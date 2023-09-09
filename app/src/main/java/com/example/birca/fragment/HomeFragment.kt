@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.birca.HomeCafeListCustomDialog
+import androidx.fragment.app.FragmentManager
+import com.example.birca.CalendarListDialog
 import com.example.birca.R
 import com.example.birca.databinding.FragmentHomeBinding
 
@@ -49,8 +50,22 @@ class HomeFragment : Fragment() {
         binding.homeCalendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
 
 
-            val dialog = HomeCafeListCustomDialog(requireContext())
-            dialog.showDialog()
+//            val dialog = HomeCafeListCustomDialog(requireContext())
+//            dialog.showDialog()
+
+            var realMonth = "${month+1}"
+            var realDayOfMonth = "${dayOfMonth}"
+            var date = ""
+            if(month+1<10) {
+                realMonth ="0${month+1}"
+            }
+            if (dayOfMonth<10) {
+                realDayOfMonth = "0$dayOfMonth"
+            }
+
+            val selectDate = "${year}-${realMonth}-${realDayOfMonth}"
+            val dialog = CalendarListDialog(selectDate)
+            dialog.show(requireFragmentManager(),"")
 
             Log.d("date", "${year}년 ${month+1}월 ${dayOfMonth}일")
         }

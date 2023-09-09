@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.birca.CafeListActivity
 import com.example.birca.R
 import com.example.birca.databinding.FragmentSearchBinding
@@ -21,7 +22,8 @@ class SearchFragment : Fragment() {
 
     var idol = ""
     var cafe_location = ""
-    var cafe_date = ""
+    var cafe_start_date = ""
+    var cafe_end_date = ""
 
     //인스턴스 선언
 //    fun newInstance() : SearchFragment {
@@ -43,6 +45,9 @@ class SearchFragment : Fragment() {
         val view = binding.root
 
 
+        binding.selectCafeDateCalendar.visibility= View.GONE
+
+
         //장소 선택
         binding.selectCafeLocation.setOnClickListener {
 
@@ -54,10 +59,11 @@ class SearchFragment : Fragment() {
 
             pop.show()
 
+
             pop.setOnMenuItemClickListener { item->
                 when(item.itemId){
                     R.id.hongdae_sinchon ->
-                        binding.selectCafeLocation.setText("홍대/신촌")
+                        binding.selectCafeLocation.setText("홍")
                     R.id.seongsu_gundae ->
                         binding.selectCafeLocation.setText("성수/건대")
                     R.id.gangnam ->
@@ -69,21 +75,59 @@ class SearchFragment : Fragment() {
 
         }
 
-        //날짜 선택
 
-        binding.selectCafeDateCalendar.setOnDateChangeListener{ view, year, month, dayOfMonth ->
+        //시작 날짜 클릭
 
-            binding.selectCafeDate.setText("${year}년 ${month+1}월 ${dayOfMonth}일")
-            cafe_date = binding.selectCafeDate.text.toString()
-            Log.d("selecteddate", "${year}년 ${month+1}월 ${dayOfMonth}일")
+        binding.selectCafeStartDate.setOnClickListener {
+            //날짜 선택
+            binding.selectCafeDateCalendar.visibility= View.VISIBLE
+
+            binding.selectCafeDateCalendar.setOnDateChangeListener{ view, year, month, dayOfMonth ->
+
+                var realMonth = "${month+1}"
+                var realDayOfMonth = "${dayOfMonth}"
+                var date = ""
+                if(month+1<10) {
+                     realMonth ="0${month+1}"
+                }
+                if (dayOfMonth<10) {
+                     realDayOfMonth = "0$dayOfMonth"
+                }
+                binding.selectCafeStartDate.setText("${year}-${realMonth}-${realDayOfMonth}")
+                cafe_start_date = binding.selectCafeStartDate.text.toString()
+                Log.d("selecteddate", "${year}-${realMonth}-${realDayOfMonth}")
+            }
         }
+
+        //종료 날짜 클릭
+
+        binding.selectCafeEndDate.setOnClickListener {
+            //날짜 선택
+            binding.selectCafeDateCalendar.setOnDateChangeListener{ view, year, month, dayOfMonth ->
+
+                var realMonth = "${month+1}"
+                var realDayOfMonth = "${dayOfMonth}"
+                if(month+1<10) {
+                     realMonth ="0${month+1}"
+                }
+                if (dayOfMonth<10) {
+                     realDayOfMonth = "0$dayOfMonth"
+                }
+                binding.selectCafeEndDate.setText("${year}-${realMonth}-${realDayOfMonth}")
+                cafe_end_date = binding.selectCafeEndDate.text.toString()
+                Log.d("selecteddate", "${year}-${realMonth}-${realDayOfMonth}")
+            }
+        }
+
+
 
         //검색 버튼
         binding.btnSearch.setOnClickListener {
 
             idol = binding.textIdol.text.toString()
             cafe_location = binding.selectCafeLocation.text.toString()
-            cafe_date = binding.selectCafeDate.text.toString()
+            cafe_start_date = binding.selectCafeStartDate.text.toString()
+            cafe_end_date = binding.selectCafeEndDate.text.toString()
 
             Log.d("click", "click")
           if(idol==""){
@@ -92,6 +136,10 @@ class SearchFragment : Fragment() {
               //다음 페이지
 //              Toast.makeText(context, "다음 페이지", Toast.LENGTH_SHORT).show()
               val intent = Intent(context, CafeListActivity::class.java )
+              intent.putExtra("idol",idol)
+              intent.putExtra("cafe_location",cafe_location)
+              intent.putExtra("cafe_start_date",cafe_start_date)
+              intent.putExtra("cafe_end_date",cafe_end_date)
               startActivity(intent)
           }
 
