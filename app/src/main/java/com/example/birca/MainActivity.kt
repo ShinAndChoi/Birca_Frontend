@@ -8,18 +8,17 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import com.example.birca.model.GetKakaoTokenResponseModel
+import com.example.birca.OnboardingActivity.OnboardingActivity1
 import com.example.birca.retrofit.APIS
 import com.example.birca.retrofit.RetrofitInstance
 import com.example.birca.sharedPreference.MyApplication
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
-import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class MainActivity : AppCompatActivity() {
 
@@ -110,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                         Log.d("GetKakaoTokenResponseModel", response.body().toString())
 
                         //홈 화면으로 이동
-                        val intent = Intent(baseContext, FragmentActivity::class.java)
+                        val intent = Intent(baseContext, OnboardingActivity1::class.java)
 //
                         startActivity(intent)
                     } else {

@@ -2,23 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- 인터넷 사용 권한 설정 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 갤러리 사용 권한 요청 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 갤러리 사용 권한 요청 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".sharedPreference.MyApplication"
         android:allowBackup="true"
-        android:enableOnBackInvokedCallback="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Birca">
+        <activity
+            android:name=".OnboardingActivity.OnboardingActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".OnboardingActivity.OnboardingActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".OnboardingActivity.OnboardingActivity1"
+            android:exported="false" />
         <activity
             android:name=".CafeMoreInfoActivity"
             android:exported="false" />
