@@ -1,7 +1,7 @@
 package com.example.birca.sharedPreference
 
 import android.app.Application
-import com.example.birca.BuildConfig
+//import com.example.birca.BuildConfig
 import com.kakao.sdk.common.KakaoSdk
 
 class MyApplication : Application() {
@@ -13,6 +13,7 @@ class MyApplication : Application() {
         preferences = PreferenceUtil(applicationContext)
         super.onCreate()
 
-        KakaoSdk.init(this, BuildConfig.KAKAO_NATIVE_APP_KEY)
+        KakaoSdk.init(this, "a07e9d74381bb92f85598a853a36c39c")
+//        KakaoSdk.init(this, BuildConfig.KAKAO_NATIVE_APP_KEY)
     }
 }
