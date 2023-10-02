@@ -17,7 +17,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="275dp"
         android:text="아이돌 생일카페 No.1 앱"
-
+        android:fontFamily="@font/pretendardsemibold"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
