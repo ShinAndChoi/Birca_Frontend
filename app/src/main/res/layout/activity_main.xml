@@ -33,18 +33,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-
-    <ImageButton
-        android:id="@+id/btn_kakao_login"
-        android:layout_width="301dp"
-        android:layout_height="47dp"
-        android:background="#FEE500"
-        android:layout_marginTop="308dp"
-        android:src="@drawable/kakao_login_medium_narrow"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/loginstart"
+        android:layout_marginTop="248dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btn_kakao_login"
+        android:layout_width="301dp"
+        android:layout_height="47dp"
+        android:backgroundTint="#FEE500"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="308dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/kakao_login_medium_narrow"
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="301dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_kakao_login"
+        app:strokeColor="#717171"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/pretendardbold"
+            android:text="다른 방법으로 로그인하기"
+            android:textSize="13dp"
+
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
