@@ -36,7 +36,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/loginstart"
+        android:src="@drawable/startlogin"
         android:layout_marginTop="248dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/kakao_login_medium_narrow"
+            android:src="@drawable/kakao_login_medium_narrow"/>
     </com.google.android.material.card.MaterialCardView>
 
 
@@ -81,7 +81,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/pretendardbold"
             android:text="다른 방법으로 로그인하기"
-            android:textSize="13dp"
+            android:textSize="13dp"/>
 
 
     </com.google.android.material.card.MaterialCardView>
