@@ -12,6 +12,7 @@ import com.example.birca.Onboarding.OnboardingActivity
 import com.example.birca.retrofit.APIS
 import com.example.birca.retrofit.RetrofitInstance
 import com.example.birca.sharedPreference.MyApplication
+import com.google.android.material.card.MaterialCardView
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val kakaoLoginBtn = findViewById<ImageButton>(R.id.btn_kakao_login)
+        val kakaoLoginBtn = findViewById<MaterialCardView>(R.id.btn_kakao_login)
 
 
         //로그인 버튼 클릭
