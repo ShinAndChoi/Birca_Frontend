@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import com.example.birca.model.GetKakaoTokenResponseModel
-import com.example.birca.OnboardingActivity.OnboardingActivity1
+import com.example.birca.Onboarding.OnboardingActivity
 import com.example.birca.retrofit.APIS
 import com.example.birca.retrofit.RetrofitInstance
 import com.example.birca.sharedPreference.MyApplication
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                         Log.d("GetKakaoTokenResponseModel", response.body().toString())
 
                         //홈 화면으로 이동
-                        val intent = Intent(baseContext, OnboardingActivity1::class.java)
+                        val intent = Intent(baseContext, OnboardingActivity::class.java)
 //
                         startActivity(intent)
                     } else {

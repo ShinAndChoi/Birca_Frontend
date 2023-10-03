@@ -1,9 +1,7 @@
-package com.example.birca.OnboardingActivity
+package com.example.birca.Onboarding
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.birca.R
-import com.example.birca.databinding.ActivityOnboarding1Binding
 import com.example.birca.databinding.ActivityOnboarding2Binding
 
 class OnboardingActivity2 : AppCompatActivity() {

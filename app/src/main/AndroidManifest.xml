@@ -17,13 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Birca">
         <activity
-            android:name=".OnboardingActivity.OnboardingActivity3"
+            android:name=".Onboarding.OnboardingActivity3"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity.OnboardingActivity2"
+            android:name=".Onboarding.OnboardingActivity2"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity.OnboardingActivity1"
+            android:name=".Onboarding.OnboardingActivity"
             android:exported="false" />
         <activity
             android:name=".CafeMoreInfoActivity"
