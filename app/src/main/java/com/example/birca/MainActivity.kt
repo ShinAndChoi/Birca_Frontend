@@ -8,18 +8,18 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import com.example.birca.model.GetKakaoTokenResponseModel
+import com.example.birca.Onboarding.OnboardingActivity
 import com.example.birca.retrofit.APIS
 import com.example.birca.retrofit.RetrofitInstance
 import com.example.birca.sharedPreference.MyApplication
+import com.google.android.material.card.MaterialCardView
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
-import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val kakaoLoginBtn = findViewById<ImageButton>(R.id.btn_kakao_login)
+        val kakaoLoginBtn = findViewById<MaterialCardView>(R.id.btn_kakao_login)
 
 
         //로그인 버튼 클릭
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     fun startKakaoLogin(context: Context) {
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
-                Log.e(TAG, "카카오계정으로 로그인 실패", error)
+                Log.e(TAG, "카카오계정으로 로그인 실패 1", error)
             } else if (token != null) {
                 Log.i(TAG, "카카오계정으로 로그인 성공 ${token.accessToken}")
 
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
             UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
                 if (error != null) {
-                    Log.e(TAG, "카카오톡으로 로그인 실패", error)
+                    Log.e(TAG, "카카오톡으로 로그인 실패 2", error)
 
                     // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
                     // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                         Log.d("GetKakaoTokenResponseModel", response.body().toString())
 
                         //홈 화면으로 이동
-                        val intent = Intent(baseContext, FragmentActivity::class.java)
+                        val intent = Intent(baseContext, OnboardingActivity::class.java)
 //
                         startActivity(intent)
                     } else {
