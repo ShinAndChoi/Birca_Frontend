@@ -25,9 +25,9 @@ class OnboardingActivity : AppCompatActivity() {
         val transaction = manager.beginTransaction()
 
 
-        val onboarding1Fragment = Onboarding1Fragment()
+        val onboardingFragment = OnboardingFragment()
 
-        transaction.replace(R.id.frameArea_onBoarding, onboarding1Fragment)
+        transaction.replace(R.id.frameArea_onBoarding, onboardingFragment)
 
         transaction.commit()
 
