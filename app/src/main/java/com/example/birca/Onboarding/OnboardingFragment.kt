@@ -13,6 +13,8 @@ import com.example.birca.databinding.FragmentOnboardingBinding
 
 class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>(R.layout.fragment_onboarding) {
 
+
+
     var who = 0
 
 
@@ -49,8 +51,21 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>(R.layout.frag
         }
 
         binding.btnSelect.setOnClickListener {
+
+            val fragmentOwner = OnboardingCafeOwnerFragment()
+            val fragmentFan = Onboarding1Fragment()
             when(who) {
 
+                1 ->  fragmentManager?.beginTransaction()?.apply {
+                    replace(R.id.frameArea_onBoarding,fragmentOwner)
+                    commit()
+
+                }
+
+                2 ->  fragmentManager?.beginTransaction()?.apply {
+                    replace(R.id.frameArea_onBoarding,fragmentFan)
+                    commit()
+                }
             }
         }
     }
