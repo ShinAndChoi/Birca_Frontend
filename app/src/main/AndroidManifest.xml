@@ -17,11 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Birca">
         <activity
-            android:name=".Onboarding.OnboardingActivity3"
-            android:exported="false" />
-        <activity
-            android:name=".Onboarding.OnboardingActivity2"
-            android:exported="false" />
+            android:name=".base.BaseActivity"
+            android:exported="false"
+            android:label="@string/title_activity_base"
+            android:theme="@style/Theme.Birca" />
+
         <activity
             android:name=".Onboarding.OnboardingActivity"
             android:exported="false" />
@@ -33,9 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".FragmentActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

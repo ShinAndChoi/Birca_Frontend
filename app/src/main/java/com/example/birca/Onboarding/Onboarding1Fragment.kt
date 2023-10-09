@@ -143,6 +143,7 @@ class Onboarding1Fragment : Fragment() {
         binding.btnGirlgroupText.setTextColor(Color.parseColor("#888888"))
         binding.btnSoloText.setTextColor(Color.parseColor("#888888"))
         binding.btnGenderText.setTextColor(Color.parseColor("#FFFFFF"))
+        //
 
     }
 
