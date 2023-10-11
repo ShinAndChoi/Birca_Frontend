@@ -23,10 +23,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:layout_marginTop="8dp"
             android:id="@+id/rv_item_text_idol_korean"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#414141"
+            android:layout_gravity="center"
             android:fontFamily="@font/pretendardbold"
             android:textSize="13sp"/>
 
@@ -35,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#727679"
+            android:layout_gravity="center"
             android:fontFamily="@font/pretendardbold"
             android:textSize="10sp"/>
 

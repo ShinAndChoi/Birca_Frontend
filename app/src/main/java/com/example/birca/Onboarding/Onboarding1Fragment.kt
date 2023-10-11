@@ -6,14 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.birca.R
+import com.example.birca.adapter.OnboardingAdapter
 import com.example.birca.databinding.FragmentOnboarding1Binding
+import com.example.birca.viewModel.OnboardingIdolViewModel
 
 
 class Onboarding1Fragment : Fragment() {
 
     private var _binding :FragmentOnboarding1Binding?= null
     private val binding get() = _binding!!
+
+    private lateinit var viewModel : OnboardingIdolViewModel
+    private lateinit var onboardingAdapter: OnboardingAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +34,21 @@ class Onboarding1Fragment : Fragment() {
         _binding = FragmentOnboarding1Binding.inflate(inflater,container,false)
         val view = binding.root
 
+        viewModel = ViewModelProvider(this).get(OnboardingIdolViewModel::class.java)
+
+        onboardingAdapter = OnboardingAdapter(ArrayList())
+
+        binding.rvIdolGroups.adapter = onboardingAdapter
+        binding.rvIdolGroups.layoutManager = GridLayoutManager(context,3)
+
+
+        viewModel.getIdolGroups()
+
+        viewModel.idolList.observe(viewLifecycleOwner, {
+            it->
+            onboardingAdapter = OnboardingAdapter(it)
+            binding.rvIdolGroups.adapter = onboardingAdapter
+        })
 
         //전체 버튼 클릭 이벤트
         binding.btnAllText.setOnClickListener{
