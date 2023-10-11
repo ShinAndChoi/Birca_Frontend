@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/rv_item_text_idol_group_korean"
+            android:id="@+id/rv_item_text_idol_korean"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#414141"
@@ -31,7 +31,7 @@
             android:textSize="13sp"/>
 
         <TextView
-            android:id="@+id/rv_item_text_idol_group_english"
+            android:id="@+id/rv_item_text_idol_english"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#727679"
