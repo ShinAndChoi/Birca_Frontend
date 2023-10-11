@@ -93,4 +93,36 @@ class OnboardingIdolViewModel :ViewModel() {
     }
 
 
+    //최애 아이돌 저장
+    fun postFavoriteIdol(a: String) {
+        API = RetrofitInstance.retrofitInstance().create(APIS::class.java)
+
+        val accessToken = MyApplication.preferences.getString("accessToken", "")
+
+        viewModelScope.launch {
+            try{
+                API.postFavoriteIdol(accessToken,a).enqueue(
+                    object : Callback<Unit> {
+
+                        override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                            if (response.isSuccessful) {
+
+
+                                Log.d("postFavoriteIdol : " , " success , ${response.body().toString()}")
+                            } else {
+
+                                Log.d("postFavoriteIdol Response : ", "fail 1 ${response.body().toString()} , ${response.message()}, ${response.errorBody().toString()}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Unit>, t: Throwable) {
+                            Log.d("postFavoriteIdol Response : ", " fail 2 , ${t.message.toString()}")
+                        }
+                    })
+            } catch (e:Exception) {
+                Log.d("postFavoriteIdol response : ", " fail 3 , ${e.message}")
+            }
+        }
+    }
+
 }

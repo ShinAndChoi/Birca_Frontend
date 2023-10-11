@@ -74,5 +74,5 @@ interface APIS {
     fun postFavoriteIdol(
         @Header("Authorization") Authorization : String,
         @Query("idolName") idolName : String
-        )
+        ) : Call<Unit>
 }

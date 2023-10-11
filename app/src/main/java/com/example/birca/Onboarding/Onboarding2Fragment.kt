@@ -27,6 +27,8 @@ class Onboarding2Fragment : Fragment() {
     private lateinit var onboardingAdapter: OnboardingAdapter
 
 
+    var myIdolGroup = ""
+    var myIdolMember = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -51,11 +53,11 @@ class Onboarding2Fragment : Fragment() {
 
 
 
-        var idolGroup = viewModel.myIdolGroup.value.toString()
-        Log.d("idolGroup",idolGroup)
+        myIdolGroup = viewModel.myIdolGroup.value.toString()
+        Log.d("idolGroup",myIdolGroup)
 
 
-        viewModel.getIdolMembers(idolGroup)
+        viewModel.getIdolMembers(myIdolGroup)
 
         viewModel.idolList.observe(viewLifecycleOwner) {
 
@@ -73,6 +75,8 @@ class Onboarding2Fragment : Fragment() {
 
                     viewModel.myIdolmember.value = idolMemberName
 
+                    Log.d("idolMemberName",idolMemberName)
+
 
                 }
             }
@@ -85,6 +89,23 @@ class Onboarding2Fragment : Fragment() {
             fragmentManager?.beginTransaction()?.apply {
                 replace(R.id.frameArea_onBoarding, onboarding1Fragment)
                 addToBackStack(null)
+                commit()
+            }
+        }
+
+        //최애 선택
+        binding.btnFavoriteIdol.setOnClickListener {
+
+            myIdolMember = viewModel.myIdolmember.value.toString()
+
+            Log.d("myIdolMember",myIdolMember)
+
+
+            viewModel.postFavoriteIdol(myIdolMember)
+
+            val onboarding3Fragment = Onboarding3Fragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea_onBoarding, onboarding3Fragment)
                 commit()
             }
         }
