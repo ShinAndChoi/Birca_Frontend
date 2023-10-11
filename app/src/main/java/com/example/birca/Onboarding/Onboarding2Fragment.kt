@@ -51,7 +51,7 @@ class Onboarding2Fragment : Fragment() {
 
 
 
-        var idolGroup = viewModel.idolGroup.value.toString()
+        var idolGroup = viewModel.myIdolGroup.value.toString()
         Log.d("idolGroup",idolGroup)
 
 

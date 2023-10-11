@@ -19,7 +19,9 @@ class OnboardingIdolViewModel :ViewModel() {
 
     private lateinit var API : APIS
 
-     var idolGroup = MutableLiveData<String>()
+     var myIdolGroup = MutableLiveData<String>()
+
+    var myIdolmember = MutableLiveData<String>()
 
     private var _idolList = MutableLiveData<ArrayList<IdolResponseModel>>()
     var idolList : LiveData<ArrayList<IdolResponseModel>> = _idolList

@@ -56,8 +56,8 @@ class Onboarding1Fragment : Fragment() {
                     val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
 
 
-                    viewModel.idolGroup.value = idolGroupName
-                    Log.d("idolGroup1",viewModel.idolGroup.value!!)
+                    viewModel.myIdolGroup.value = idolGroupName
+                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
 
                     Log.d("click", "click")
                     val onboarding2Fragment = Onboarding2Fragment()
