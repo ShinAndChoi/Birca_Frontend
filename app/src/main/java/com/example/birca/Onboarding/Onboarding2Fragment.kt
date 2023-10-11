@@ -63,6 +63,19 @@ class Onboarding2Fragment : Fragment() {
 
             onboardingAdapter = OnboardingAdapter(it)
             binding.rvIdolMember.adapter = onboardingAdapter
+
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+
+                override fun onClick(view: View, position: Int) {
+
+                    val idolMemberName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+
+
+                    viewModel.myIdolmember.value = idolMemberName
+
+
+                }
+            }
         }
 
 
