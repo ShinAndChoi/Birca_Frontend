@@ -2,6 +2,7 @@ package com.example.birca.Onboarding
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +35,7 @@ class Onboarding1Fragment : Fragment() {
         _binding = FragmentOnboarding1Binding.inflate(inflater,container,false)
         val view = binding.root
 
-        viewModel = ViewModelProvider(this).get(OnboardingIdolViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(OnboardingIdolViewModel::class.java)
 
         onboardingAdapter = OnboardingAdapter(ArrayList())
 
@@ -44,11 +45,41 @@ class Onboarding1Fragment : Fragment() {
 
         viewModel.getIdolGroups()
 
-        viewModel.idolList.observe(viewLifecycleOwner, {
-            it->
+        viewModel.idolList.observe(viewLifecycleOwner) {
             onboardingAdapter = OnboardingAdapter(it)
             binding.rvIdolGroups.adapter = onboardingAdapter
-        })
+
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+
+                override fun onClick(view: View, position: Int) {
+
+                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+
+
+                    viewModel.idolGroup.value = idolGroupName
+                    Log.d("idolGroup1",viewModel.idolGroup.value!!)
+
+                    Log.d("click", "click")
+                    val onboarding2Fragment = Onboarding2Fragment()
+                    fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding, onboarding2Fragment)
+                        addToBackStack(null)
+                        commit()
+
+//                        viewModel.getIdolMembers(idolGroupName!!)
+
+                    }
+                }
+            }
+        }
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
 
         //전체 버튼 클릭 이벤트
         binding.btnAllText.setOnClickListener{
@@ -71,7 +102,7 @@ class Onboarding1Fragment : Fragment() {
         //솔로 버튼 클릭 이벤트
         binding.btnSoloText.setOnClickListener {
 
-           // btnSolo()
+            // btnSolo()
         }
 
         //혼성 버튼 클릭 이벤트
@@ -80,7 +111,6 @@ class Onboarding1Fragment : Fragment() {
             //btnGender()
         }
 
-        return view
     }
 
     fun btnAll() {
