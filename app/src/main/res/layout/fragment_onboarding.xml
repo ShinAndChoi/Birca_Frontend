@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Onboarding.OnboardingFragment">
@@ -37,6 +38,7 @@
         android:layout_height="47dp"
         android:layout_marginTop="50dp"
         app:cardCornerRadius="10dp"
+        android:backgroundTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
@@ -58,6 +60,7 @@
         android:layout_height="47dp"
         android:layout_marginTop="23dp"
         app:cardCornerRadius="10dp"
+        android:backgroundTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_cafe_owner"
@@ -77,7 +80,7 @@
         android:id="@+id/btn_select"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:backgroundTint="#A1B4FF"
+        android:backgroundTint="#717171"
         app:cardCornerRadius="30dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,8 +89,10 @@
         app:strokeWidth="0dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/btn_select_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_gravity="center"
             android:fontFamily="@font/pretendardbold"
             android:text="선택하기"
