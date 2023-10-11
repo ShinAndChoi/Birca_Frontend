@@ -10,7 +10,10 @@ import com.bumptech.glide.Glide
 import com.example.birca.R
 import com.example.birca.model.IdolResponseModel
 
+
 class OnboardingAdapter(private var idolList : ArrayList<IdolResponseModel>) : RecyclerView.Adapter<OnboardingAdapter.ViewHolder>() {
+
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -28,6 +31,11 @@ val item = idolList[position]
                return idolList.size
     }
 
+    interface ItemClick {
+        fun onClick(view: View,position: Int)
+    }
+    var itemClick : ItemClick? = null
+
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         var rv_item_text_idol_korean : TextView = view.findViewById(R.id.rv_item_text_idol_korean)
         var rv_item_text_idol_english : TextView = view.findViewById(R.id.rv_item_text_idol_english)
@@ -39,6 +47,9 @@ val item = idolList[position]
           Glide.with(itemView.context)
               .load(item.imageUrl)
               .into(rv_item_image_idol)
+            itemView.setOnClickListener {
+                itemClick?.onClick(itemView,adapterPosition)
+            }
         }
     }
 
