@@ -62,4 +62,10 @@ interface APIS {
         @Header("Authorization") Authorization : String,
         ) : Call<ArrayList<IdolResponseModel>>
 
+    //아이돌 멤버 받아오기
+    @GET("idols")
+    fun getIdols (
+        @Header("Authorization") Authorization : String,
+        @Query("groupName") groupName : String
+        ) : Call<ArrayList<IdolResponseModel>>
 }
