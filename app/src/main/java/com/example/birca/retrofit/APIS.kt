@@ -68,4 +68,11 @@ interface APIS {
         @Header("Authorization") Authorization : String,
         @Query("groupName") groupName : String
         ) : Call<ArrayList<IdolResponseModel>>
+
+    //최애 아이돌 저장
+    @POST("save/favoriteIdol")
+    fun postFavoriteIdol(
+        @Header("Authorization") Authorization : String,
+        @Query("idolName") idolName : String
+        )
 }
