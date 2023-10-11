@@ -17,6 +17,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>(R.layout.frag
 
     var who = 0
 
+    var isSelcted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,31 +43,39 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>(R.layout.frag
             who = 1
             binding.btnCafeOwnerColor.setBackgroundColor(Color.parseColor("#A1B4FF"))
             binding.btnCafeFanColor.setBackgroundColor(Color.parseColor("#FFFFFF"))
+            binding.btnSelectColor.setBackgroundColor(Color.parseColor("#A1B4FF"))
+            isSelcted = true
         }
 
         binding.btnCafeFan.setOnClickListener {
             who = 2
             binding.btnCafeOwnerColor.setBackgroundColor(Color.parseColor("#FFFFFF"))
             binding.btnCafeFanColor.setBackgroundColor(Color.parseColor("#A1B4FF"))
+            binding.btnSelectColor.setBackgroundColor(Color.parseColor("#A1B4FF"))
+            isSelcted  = true
+
         }
 
         binding.btnSelect.setOnClickListener {
 
-            val fragmentOwner = OnboardingCafeOwnerFragment()
-            val fragmentFan = Onboarding1Fragment()
-            when(who) {
+            if(isSelcted==true) {
+                val fragmentOwner = OnboardingCafeOwnerFragment()
+                val fragmentFan = Onboarding1Fragment()
+                when(who) {
 
-                1 ->  fragmentManager?.beginTransaction()?.apply {
-                    replace(R.id.frameArea_onBoarding,fragmentOwner)
-                    commit()
+                    1 ->  fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding,fragmentOwner)
+                        commit()
 
-                }
+                    }
 
-                2 ->  fragmentManager?.beginTransaction()?.apply {
-                    replace(R.id.frameArea_onBoarding,fragmentFan)
-                    commit()
+                    2 ->  fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding,fragmentFan)
+                        commit()
+                    }
                 }
             }
+
         }
     }
 }
