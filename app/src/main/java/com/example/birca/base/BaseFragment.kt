@@ -25,6 +25,7 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) 
         val view = binding.root
 
 
+        binding.lifecycleOwner = this@BaseFragment
 
         return view
     }
