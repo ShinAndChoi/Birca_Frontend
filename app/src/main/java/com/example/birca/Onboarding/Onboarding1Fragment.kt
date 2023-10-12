@@ -84,42 +84,48 @@ class Onboarding1Fragment : Fragment() {
         //전체 버튼 클릭 이벤트
         binding.btnAllText.setOnClickListener{
 
-            //btnAll()
+            btnAll()
         }
 
         //보이그룹 버튼 클릭 이벤트
         binding.btnBoygroupText.setOnClickListener {
 
-            //btnBoygroup()
+            btnBoygroup()
         }
 
         //걸그룹 버튼 클릭 이벤트
         binding.btnGirlgroupText.setOnClickListener {
 
-            //btnGirlgroup()
+            btnGirlgroup()
         }
 
         //솔로 버튼 클릭 이벤트
         binding.btnSoloText.setOnClickListener {
 
-            // btnSolo()
+             btnSolo()
         }
 
         //혼성 버튼 클릭 이벤트
         binding.btnGenderText.setOnClickListener {
 
-            //btnGender()
+            btnGender()
         }
 
     }
 
     fun btnAll() {
+        binding.btnAllText.setBackgroundResource(R.drawable.onboarding_border_selected)
+        binding.btnBoygroupText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnGirlgroupText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnSoloText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnGenderText.setBackgroundResource(R.drawable.onbooarding_border)
 
-        binding.btnAllText.setBackgroundColor(Color.parseColor("#000000"))
-        binding.btnBoygroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnGirlgroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnSoloText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnGenderText.setBackgroundColor(Color.parseColor("#FFFFFF"))
+
+//        binding.btnAllText.setBackgroundColor(Color.parseColor("#000000"))
+//        binding.btnBoygroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
+//        binding.btnGirlgroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
+//        binding.btnSoloText.setBackgroundColor(Color.parseColor("#FFFFFF"))
+//        binding.btnGenderText.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
         binding.btnAllText.setTextColor(Color.parseColor("#FFFFFF"))
         binding.btnBoygroupText.setTextColor(Color.parseColor("#888888"))
@@ -134,11 +140,11 @@ class Onboarding1Fragment : Fragment() {
     fun btnBoygroup() {
 
 
-        binding.btnAllText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnBoygroupText.setBackgroundColor(Color.parseColor("#000000"))
-        binding.btnGirlgroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnSoloText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnGenderText.setBackgroundColor(Color.parseColor("#FFFFFF"))
+        binding.btnAllText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnBoygroupText.setBackgroundResource(R.drawable.onboarding_border_selected)
+        binding.btnGirlgroupText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnSoloText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnGenderText.setBackgroundResource(R.drawable.onbooarding_border)
 
         binding.btnAllText.setTextColor(Color.parseColor("#888888"))
         binding.btnBoygroupText.setTextColor(Color.parseColor("#FFFFFF"))
@@ -152,11 +158,11 @@ class Onboarding1Fragment : Fragment() {
 
     fun btnGirlgroup() {
 
-        binding.btnAllText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnBoygroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnGirlgroupText.setBackgroundColor(Color.parseColor("#000000"))
-        binding.btnSoloText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnGenderText.setBackgroundColor(Color.parseColor("#FFFFFF"))
+        binding.btnAllText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnBoygroupText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnGirlgroupText.setBackgroundResource(R.drawable.onboarding_border_selected)
+        binding.btnSoloText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnGenderText.setBackgroundResource(R.drawable.onbooarding_border)
 
         binding.btnAllText.setTextColor(Color.parseColor("#888888"))
         binding.btnBoygroupText.setTextColor(Color.parseColor("#888888"))
@@ -168,11 +174,11 @@ class Onboarding1Fragment : Fragment() {
 
     fun btnSolo() {
 
-        binding.btnAllText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnBoygroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnGirlgroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnSoloText.setBackgroundColor(Color.parseColor("#000000"))
-        binding.btnGenderText.setBackgroundColor(Color.parseColor("#FFFFFF"))
+        binding.btnAllText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnBoygroupText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnGirlgroupText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnSoloText.setBackgroundResource(R.drawable.onboarding_border_selected)
+        binding.btnGenderText.setBackgroundResource(R.drawable.onbooarding_border)
 
         binding.btnAllText.setTextColor(Color.parseColor("#888888"))
         binding.btnBoygroupText.setTextColor(Color.parseColor("#888888"))
@@ -184,11 +190,11 @@ class Onboarding1Fragment : Fragment() {
 
     fun btnGender() {
 
-        binding.btnAllText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnBoygroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnGirlgroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnSoloText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-        binding.btnGenderText.setBackgroundColor(Color.parseColor("#000000"))
+        binding.btnAllText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnBoygroupText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnGirlgroupText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnSoloText.setBackgroundResource(R.drawable.onbooarding_border)
+        binding.btnGenderText.setBackgroundResource(R.drawable.onboarding_border_selected)
 
         binding.btnAllText.setTextColor(Color.parseColor("#888888"))
         binding.btnBoygroupText.setTextColor(Color.parseColor("#888888"))
