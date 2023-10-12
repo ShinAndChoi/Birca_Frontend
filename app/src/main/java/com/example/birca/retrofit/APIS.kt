@@ -2,7 +2,6 @@ package com.example.birca.retrofit
 
 import com.example.birca.model.GetKakaoTokenResponseModel
 import com.example.birca.model.IdolResponseModel
-import com.example.birca.model.cafeListResponseModel
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.GET
@@ -15,23 +14,7 @@ import retrofit2.http.Query
 interface APIS {
 
 
-    //카페 검색
-    @GET("cafes")
-    fun getCafeListSearch (
-        @Header("Authorization") Authorization : String,
-        @Query("page") page : Int,
-        @Query("address") address : String,
-        @Query("idolName") idolName : String,
-        @Query("startDate") startDate : String,
-        @Query("endDate") endDate : String,
-    ) : Call<ArrayList<cafeListResponseModel>>
 
-    //홈 캘린더 클릭
-    @GET("cafes/reserved-on")
-    fun getCafeListCalendar (
-        @Header("Authorization") Authorization : String,
-        @Query("selectedDate") selectedDate : String
-    ) : Call<ArrayList<cafeListResponseModel>>
 
     //카페 등록
     @Multipart

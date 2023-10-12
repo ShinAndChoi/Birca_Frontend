@@ -58,19 +58,18 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/pretendardmedium"
                 android:gravity="center"
-                android:backgroundTint="#000000"
                 android:text="전체"
-                android:background="@drawable/onbooarding_border"
+                android:background="@drawable/onboarding_border_selected"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp" />
 
 
         <TextView
             android:id="@+id/btn_boygroup_text"
-            android:layout_marginLeft="5dp"
-            android:layout_width="65dp"
+            android:layout_width="69dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
             android:background="@drawable/onbooarding_border"
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"

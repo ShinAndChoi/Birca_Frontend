@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.birca.model.IdolResponseModel
-import com.example.birca.model.cafeListResponseModel
 import com.example.birca.retrofit.APIS
 import com.example.birca.retrofit.RetrofitInstance
 import com.example.birca.sharedPreference.MyApplication
