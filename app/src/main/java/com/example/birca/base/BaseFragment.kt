@@ -30,6 +30,5 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) 
         return view
     }
 
-
-
+    
 }

@@ -4,18 +4,18 @@
 
     <item
         android:id="@+id/tab1"
-        android:title="홈"
+        android:title=""
         android:icon="@drawable/home"/>
     <item
         android:id="@+id/tab2"
-        android:title="카페 검색"
-        android:icon="@drawable/search"/>
+        android:title=""
+        android:icon="@drawable/heart"/>
     <item
         android:id="@+id/tab3"
-        android:title="카페 대관"
-        android:icon="@drawable/rent"/>
+        android:title=""
+        android:icon="@drawable/chatting"/>
     <item
         android:id="@+id/tab4"
-        android:title="카페 등록"
-        android:icon="@drawable/register"/>
+        android:title=""
+        android:icon="@drawable/my"/>
 </menu>

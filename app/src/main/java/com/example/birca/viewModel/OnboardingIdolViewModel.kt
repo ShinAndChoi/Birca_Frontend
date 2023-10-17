@@ -58,6 +58,40 @@ class OnboardingIdolViewModel :ViewModel() {
         }
     }
 
+
+    //아이돌 그룹 카테고리별 가져오기
+    fun getIdolGroupsCategory(a : String) {
+        API = RetrofitInstance.retrofitInstance().create(APIS::class.java)
+
+        val accessToken = MyApplication.preferences.getString("accessToken", "")
+
+        viewModelScope.launch {
+            try{
+                API.getIdolGroupsCategory(accessToken, a).enqueue(
+                    object : Callback<ArrayList<IdolResponseModel>> {
+
+                        override fun onResponse(call: Call<ArrayList<IdolResponseModel>>, response: Response<ArrayList<IdolResponseModel>>) {
+                            if (response.isSuccessful) {
+
+                                _idolList.value = response.body()
+
+                                Log.d("IdolResponseModel : " , " success , ${response.body().toString()}")
+                            } else {
+
+                                Log.d("IdolResponseModel Response : ", "fail 1 ${response.body().toString()} , ${response.message()}, ${response.errorBody().toString()}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ArrayList<IdolResponseModel>>, t: Throwable) {
+                            Log.d("IdolResponseModel Response : ", " fail 2 , ${t.message.toString()}")
+                        }
+                    })
+            } catch (e:Exception) {
+                Log.d("IdolResponseModel response : ", " fail 3 , ${e.message}")
+            }
+        }
+    }
+
     //아이돌 멤버 가져오기
     fun getIdolMembers(a : String) {
         API = RetrofitInstance.retrofitInstance().create(APIS::class.java)
@@ -124,4 +158,35 @@ class OnboardingIdolViewModel :ViewModel() {
         }
     }
 
+
+    fun saveUserRole(a: String) {
+        API = RetrofitInstance.retrofitInstance().create(APIS::class.java)
+
+        val accessToken = MyApplication.preferences.getString("accessToken", "")
+
+        viewModelScope.launch {
+            try{
+                API.saveUserRole(accessToken,a).enqueue(
+                    object : Callback<Unit> {
+
+                        override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                            if (response.isSuccessful) {
+
+
+                                Log.d("saveUserRole : " , " success , ${response.body().toString()}")
+                            } else {
+
+                                Log.d("saveUserRole Response : ", "fail 1 ${response.body().toString()} , ${response.message()}, ${response.errorBody().toString()}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Unit>, t: Throwable) {
+                            Log.d("saveUserRole Response : ", " fail 2 , ${t.message.toString()}")
+                        }
+                    })
+            } catch (e:Exception) {
+                Log.d("saveUserRole response : ", " fail 3 , ${e.message}")
+            }
+        }
+    }
 }

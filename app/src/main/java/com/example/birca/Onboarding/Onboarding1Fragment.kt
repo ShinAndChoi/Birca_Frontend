@@ -121,11 +121,6 @@ class Onboarding1Fragment : Fragment() {
         binding.btnGenderText.setBackgroundResource(R.drawable.onbooarding_border)
 
 
-//        binding.btnAllText.setBackgroundColor(Color.parseColor("#000000"))
-//        binding.btnBoygroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-//        binding.btnGirlgroupText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-//        binding.btnSoloText.setBackgroundColor(Color.parseColor("#FFFFFF"))
-//        binding.btnGenderText.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
         binding.btnAllText.setTextColor(Color.parseColor("#FFFFFF"))
         binding.btnBoygroupText.setTextColor(Color.parseColor("#888888"))
@@ -134,6 +129,35 @@ class Onboarding1Fragment : Fragment() {
         binding.btnGenderText.setTextColor(Color.parseColor("#888888"))
 
 
+        viewModel.getIdolGroups()
+
+        viewModel.idolList.observe(viewLifecycleOwner) {
+            onboardingAdapter = OnboardingAdapter(it)
+            binding.rvIdolGroups.adapter = onboardingAdapter
+
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+
+                override fun onClick(view: View, position: Int) {
+
+                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+
+
+                    viewModel.myIdolGroup.value = idolGroupName
+                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+
+                    Log.d("click", "click")
+                    val onboarding2Fragment = Onboarding2Fragment()
+                    fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding, onboarding2Fragment)
+                        addToBackStack(null)
+                        commit()
+
+//                        viewModel.getIdolMembers(idolGroupName!!)
+
+                    }
+                }
+            }
+        }
 
     }
 
@@ -152,6 +176,43 @@ class Onboarding1Fragment : Fragment() {
         binding.btnSoloText.setTextColor(Color.parseColor("#888888"))
         binding.btnGenderText.setTextColor(Color.parseColor("#888888"))
 
+//        viewModel = ViewModelProvider(requireActivity()).get(OnboardingIdolViewModel::class.java)
+
+//        onboardingAdapter = OnboardingAdapter(ArrayList())
+//
+//        binding.rvIdolGroups.adapter = onboardingAdapter
+//        binding.rvIdolGroups.layoutManager = GridLayoutManager(context,3)
+
+
+        viewModel.getIdolGroupsCategory("보이그룹")
+
+        viewModel.idolList.observe(viewLifecycleOwner) {
+            onboardingAdapter = OnboardingAdapter(it)
+            binding.rvIdolGroups.adapter = onboardingAdapter
+
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+
+                override fun onClick(view: View, position: Int) {
+
+                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+
+
+                    viewModel.myIdolGroup.value = idolGroupName
+                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+
+                    Log.d("click", "click")
+                    val onboarding2Fragment = Onboarding2Fragment()
+                    fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding, onboarding2Fragment)
+                        addToBackStack(null)
+                        commit()
+
+//                        viewModel.getIdolMembers(idolGroupName!!)
+
+                    }
+                }
+            }
+        }
 
 
     }
@@ -170,6 +231,37 @@ class Onboarding1Fragment : Fragment() {
         binding.btnSoloText.setTextColor(Color.parseColor("#888888"))
         binding.btnGenderText.setTextColor(Color.parseColor("#888888"))
 
+
+        viewModel.getIdolGroupsCategory("걸그룹")
+
+        viewModel.idolList.observe(viewLifecycleOwner) {
+            onboardingAdapter = OnboardingAdapter(it)
+            binding.rvIdolGroups.adapter = onboardingAdapter
+
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+
+                override fun onClick(view: View, position: Int) {
+
+                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+
+
+                    viewModel.myIdolGroup.value = idolGroupName
+                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+
+                    Log.d("click", "click")
+                    val onboarding2Fragment = Onboarding2Fragment()
+                    fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding, onboarding2Fragment)
+                        addToBackStack(null)
+                        commit()
+
+//                        viewModel.getIdolMembers(idolGroupName!!)
+
+                    }
+                }
+            }
+        }
+
     }
 
     fun btnSolo() {
@@ -186,6 +278,36 @@ class Onboarding1Fragment : Fragment() {
         binding.btnSoloText.setTextColor(Color.parseColor("#FFFFFF"))
         binding.btnGenderText.setTextColor(Color.parseColor("#888888"))
 
+        viewModel.getIdolGroupsCategory("솔로")
+
+        viewModel.idolList.observe(viewLifecycleOwner) {
+            onboardingAdapter = OnboardingAdapter(it)
+            binding.rvIdolGroups.adapter = onboardingAdapter
+
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+
+                override fun onClick(view: View, position: Int) {
+
+                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+
+
+                    viewModel.myIdolGroup.value = idolGroupName
+                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+
+                    Log.d("click", "click")
+                    val onboarding2Fragment = Onboarding2Fragment()
+                    fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding, onboarding2Fragment)
+                        addToBackStack(null)
+                        commit()
+
+//                        viewModel.getIdolMembers(idolGroupName!!)
+
+                    }
+                }
+            }
+        }
+
     }
 
     fun btnGender() {
@@ -201,7 +323,37 @@ class Onboarding1Fragment : Fragment() {
         binding.btnGirlgroupText.setTextColor(Color.parseColor("#888888"))
         binding.btnSoloText.setTextColor(Color.parseColor("#888888"))
         binding.btnGenderText.setTextColor(Color.parseColor("#FFFFFF"))
-        //
+
+
+        viewModel.getIdolGroupsCategory("혼성")
+
+        viewModel.idolList.observe(viewLifecycleOwner) {
+            onboardingAdapter = OnboardingAdapter(it)
+            binding.rvIdolGroups.adapter = onboardingAdapter
+
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+
+                override fun onClick(view: View, position: Int) {
+
+                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+
+
+                    viewModel.myIdolGroup.value = idolGroupName
+                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+
+                    Log.d("click", "click")
+                    val onboarding2Fragment = Onboarding2Fragment()
+                    fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding, onboarding2Fragment)
+                        addToBackStack(null)
+                        commit()
+
+//                        viewModel.getIdolMembers(idolGroupName!!)
+
+                    }
+                }
+            }
+        }
 
     }
 

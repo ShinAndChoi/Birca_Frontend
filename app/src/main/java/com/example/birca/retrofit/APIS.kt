@@ -7,6 +7,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Query
@@ -16,18 +17,6 @@ interface APIS {
 
 
 
-    //카페 등록
-    @Multipart
-    @POST("cafe/register")
-    fun postRegisterCafe(
-        @Header("Authorization") Authorization : String,
-        @Part("cafeName") cafeName : String,
-        @Part("introduction") introduction : String,
-        @Part("address") address : String,
-        @Part("contact") contact : String,
-        @Part businessLicense  : List<MultipartBody.Part>,
-        @Part cafeImages : List<MultipartBody.Part>,
-    )
 
 
     //---------------------------refactoring------------------------------
@@ -39,10 +28,17 @@ interface APIS {
     ) : Call<GetKakaoTokenResponseModel>
 
 
-    //아이돌 그룹 받아오기
+    //아이돌 그룹 전체 받아오기
     @GET("idolGroups")
     fun getIdolGroups (
         @Header("Authorization") Authorization : String,
+        ) : Call<ArrayList<IdolResponseModel>>
+
+    //아이돌 그룹 카테고리별 받아오기
+    @GET("idolGroup/search/category")
+    fun getIdolGroupsCategory(
+        @Header("Authorization") Authorization : String,
+        @Query("type") type : String
         ) : Call<ArrayList<IdolResponseModel>>
 
     //아이돌 멤버 받아오기
@@ -58,4 +54,23 @@ interface APIS {
         @Header("Authorization") Authorization : String,
         @Query("idolName") idolName : String
         ) : Call<Unit>
+
+    //카페 사장 정보
+    @Multipart
+    @POST("save/cafeInform")
+    fun postCafeOwnerInfo(
+        @Header("Authorization") Authorization : String,
+        @Part("ownerName") ownerName : String,
+        @Part("cafeName") cafeName : String,
+        @Part("contactNumber") contactNumber : String,
+        @Part businessLicense: MultipartBody.Part,
+
+    ) : Call<Unit>
+
+    //팬 및 카페사장 저장
+    @PATCH("updateRoleType")
+    fun saveUserRole(
+        @Header("Authorization") Authorization : String,
+        @Query("roleType") roleType : String
+        ): Call<Unit>
 }

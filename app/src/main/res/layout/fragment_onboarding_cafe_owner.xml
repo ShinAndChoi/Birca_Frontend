@@ -80,7 +80,7 @@
             android:textSize="13sp" />
 
         <EditText
-            android:id="@+id/text_cafe_owner_cafename"
+            android:id="@+id/text_cafename"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -211,10 +211,17 @@
                 app:layout_constraintEnd_toEndOf="@+id/textView8"
                 app:layout_constraintTop_toTopOf="@+id/textView8" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/image"
+            android:layout_marginTop="20dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/grey"/>
 
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btn_send_cafe_owner_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#A1B4FF"
