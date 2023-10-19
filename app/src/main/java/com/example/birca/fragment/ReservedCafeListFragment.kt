@@ -33,15 +33,15 @@ class ReservedCafeListFragment : Fragment() {
     ): View? {
 
 
-        _binding = FragmentReservedCafeListBinding.inflate(inflater,container,false)
+        _binding = FragmentReservedCafeListBinding.inflate(inflater, container, false)
         val view = binding.root
         var textList = ArrayList<CafeListResponseModel>()
-        textList.add(CafeListResponseModel("A","A","a"))
-        textList.add(CafeListResponseModel("b","b","ab"))
+        textList.add(CafeListResponseModel("A", "A", "a"))
+        textList.add(CafeListResponseModel("b", "b", "ab"))
 
-        textList.add(CafeListResponseModel("c","c","c"))
+        textList.add(CafeListResponseModel("c", "c", "c"))
 
-        textList.add(CafeListResponseModel("d","d","d"))
+        textList.add(CafeListResponseModel("d", "d", "d"))
 
 
         cafeListAdapter = CafeListAdapter(textList)
