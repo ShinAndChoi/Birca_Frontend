@@ -20,10 +20,10 @@ import com.example.birca.viewModel.OnboardingIdolViewModel
 
 class Onboarding2Fragment : Fragment() {
 
-    private var _binding : FragmentOnboarding2Binding?= null
+    private var _binding: FragmentOnboarding2Binding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel : OnboardingIdolViewModel
+    private lateinit var viewModel: OnboardingIdolViewModel
     private lateinit var onboardingAdapter: OnboardingAdapter
 
 
@@ -40,7 +40,7 @@ class Onboarding2Fragment : Fragment() {
     ): View? {
 
 
-        _binding = FragmentOnboarding2Binding.inflate(inflater,container,false)
+        _binding = FragmentOnboarding2Binding.inflate(inflater, container, false)
         val view = binding.root
 
 
@@ -49,12 +49,12 @@ class Onboarding2Fragment : Fragment() {
         onboardingAdapter = OnboardingAdapter(ArrayList())
 
         binding.rvIdolMember.adapter = onboardingAdapter
-        binding.rvIdolMember.layoutManager = GridLayoutManager(context,3)
+        binding.rvIdolMember.layoutManager = GridLayoutManager(context, 3)
 
 
 
         myIdolGroup = viewModel.myIdolGroup.value.toString()
-        Log.d("idolGroup",myIdolGroup)
+        Log.d("idolGroup", myIdolGroup)
 
 
         viewModel.getIdolMembers(myIdolGroup)
@@ -62,20 +62,20 @@ class Onboarding2Fragment : Fragment() {
         viewModel.idolList.observe(viewLifecycleOwner) {
 
 
-
             onboardingAdapter = OnboardingAdapter(it)
             binding.rvIdolMember.adapter = onboardingAdapter
 
-            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick {
 
                 override fun onClick(view: View, position: Int) {
 
-                    val idolMemberName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+                    val idolMemberName =
+                        viewModel.idolList.value?.get(position)?.koreanName.toString()
 
 
                     viewModel.myIdolmember.value = idolMemberName
 
-                    Log.d("idolMemberName",idolMemberName)
+                    Log.d("idolMemberName", idolMemberName)
 
 
                 }
@@ -98,7 +98,7 @@ class Onboarding2Fragment : Fragment() {
 
             myIdolMember = viewModel.myIdolmember.value.toString()
 
-            Log.d("myIdolMember",myIdolMember)
+            Log.d("myIdolMember", myIdolMember)
 
 
             viewModel.postFavoriteIdol(myIdolMember)
@@ -114,9 +114,7 @@ class Onboarding2Fragment : Fragment() {
         return view
 
 
-
     }
-
 
 
 }

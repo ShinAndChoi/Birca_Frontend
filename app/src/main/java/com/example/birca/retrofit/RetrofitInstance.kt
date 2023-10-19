@@ -1,5 +1,6 @@
 package com.example.birca.retrofit
 
+import com.example.birca.BuildConfig
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
-    private const val baseURL = "http://43.202.154.107:8080/"
+    private const val baseURL = BuildConfig.BASE_URL
 
     private val interceptor = HttpLoggingInterceptor().apply {
         this.level = HttpLoggingInterceptor.Level.BODY

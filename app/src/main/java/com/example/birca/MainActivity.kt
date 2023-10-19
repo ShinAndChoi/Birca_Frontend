@@ -102,10 +102,10 @@ class MainActivity : AppCompatActivity() {
 
 
 //                        정보 sharedPreference에 저장
-                        MyApplication.preferences.setString("nickname",nickname)
-                        MyApplication.preferences.setString("email",email)
-                        MyApplication.preferences.setString("accessToken",accessToken)
-                        MyApplication.preferences.setString("refreshToken",refreshToken)
+                        MyApplication.preferences.setString("nickname", nickname)
+                        MyApplication.preferences.setString("email", email)
+                        MyApplication.preferences.setString("accessToken", accessToken)
+                        MyApplication.preferences.setString("refreshToken", refreshToken)
 
                         Log.d("GetKakaoTokenResponseModel", response.body().toString())
 

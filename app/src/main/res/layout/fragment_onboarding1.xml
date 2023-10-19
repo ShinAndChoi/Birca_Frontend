@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,8 +12,8 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
-        android:layout_marginLeft="25dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="59dp"
         android:fontFamily="@font/pretendardbold"
         android:text="소식을 보고 싶은 아티스트를 선택해주세요."
@@ -49,19 +48,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
 
-
-
-            <TextView
-                android:id="@+id/btn_all_text"
-                android:layout_width="50dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:fontFamily="@font/pretendardmedium"
-                android:gravity="center"
-                android:text="전체"
-                android:background="@drawable/onboarding_border_selected"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp" />
+        <TextView
+            android:id="@+id/btn_all_text"
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@drawable/onboarding_border_selected"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:text="전체"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp" />
 
 
         <TextView
@@ -79,10 +76,10 @@
 
         <TextView
             android:id="@+id/btn_girlgroup_text"
-            android:layout_marginLeft="5dp"
             android:layout_width="58dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
             android:background="@drawable/onbooarding_border"
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
@@ -92,10 +89,10 @@
 
         <TextView
             android:id="@+id/btn_solo_text"
-            android:layout_marginLeft="5dp"
             android:layout_width="50dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
             android:background="@drawable/onbooarding_border"
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
@@ -105,26 +102,16 @@
 
         <TextView
             android:id="@+id/btn_gender_text"
-            android:layout_marginLeft="5dp"
             android:layout_width="50dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
             android:background="@drawable/onbooarding_border"
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:text="혼성"
             android:textColor="#888888"
             android:textSize="13sp" />
-
-
-
-
-
-
-
-
-
-
 
 
     </LinearLayout>
@@ -148,10 +135,10 @@
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="69dp"
         android:layout_marginLeft="31dp"
+        android:layout_marginTop="23dp"
         android:layout_marginRight="31dp"
+        android:layout_marginBottom="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,7 +147,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_idol_groups"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </ScrollView>
 

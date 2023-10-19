@@ -16,7 +16,7 @@ import com.example.birca.viewModel.OnboardingIdolViewModel
 class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>(R.layout.fragment_onboarding) {
 
 
-    private lateinit var viewModel : OnboardingIdolViewModel
+    private lateinit var viewModel: OnboardingIdolViewModel
 
     var who = 0
 
@@ -34,7 +34,6 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>(R.layout.frag
 
 
         return super.onCreateView(inflater, container, savedInstanceState)
-
 
 
     }
@@ -58,17 +57,17 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>(R.layout.frag
             binding.btnCafeOwnerColor.setBackgroundColor(Color.parseColor("#FFFFFF"))
             binding.btnCafeFanColor.setBackgroundColor(Color.parseColor("#A1B4FF"))
             binding.btnSelectColor.setBackgroundColor(Color.parseColor("#A1B4FF"))
-            isSelcted  = true
+            isSelcted = true
 
 
         }
 
         binding.btnSelect.setOnClickListener {
 
-            if(isSelcted==true) {
+            if (isSelcted == true) {
                 val fragmentOwner = OnboardingCafeOwnerFragment()
                 val fragmentFan = Onboarding1Fragment()
-                if(who==1){
+                if (who == 1) {
                     viewModel.saveUserRole("cafeOwner")
 
                 } else {
@@ -76,16 +75,16 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>(R.layout.frag
 
                 }
 
-                when(who) {
+                when (who) {
 
-                    1 ->  fragmentManager?.beginTransaction()?.apply {
-                        replace(R.id.frameArea_onBoarding,fragmentOwner)
+                    1 -> fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding, fragmentOwner)
                         commit()
 
                     }
 
-                    2 ->  fragmentManager?.beginTransaction()?.apply {
-                        replace(R.id.frameArea_onBoarding,fragmentFan)
+                    2 -> fragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frameArea_onBoarding, fragmentFan)
                         commit()
                     }
                 }

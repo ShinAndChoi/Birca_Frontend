@@ -12,7 +12,7 @@ import com.example.birca.R
 
 abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) : Fragment() {
 
-    lateinit var binding : T
+    lateinit var binding: T
 
 
     override fun onCreateView(
@@ -20,7 +20,7 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) 
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater,layoutRes,container,false)
+        binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
 
         val view = binding.root
 
@@ -30,5 +30,5 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) 
         return view
     }
 
-    
+
 }

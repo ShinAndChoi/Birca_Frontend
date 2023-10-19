@@ -12,7 +12,8 @@ import com.example.birca.base.BaseFragment
 import com.example.birca.databinding.FragmentOnboarding3Binding
 
 
-class Onboarding3Fragment : BaseFragment<FragmentOnboarding3Binding>(R.layout.fragment_onboarding3) {
+class Onboarding3Fragment :
+    BaseFragment<FragmentOnboarding3Binding>(R.layout.fragment_onboarding3) {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

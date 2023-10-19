@@ -20,14 +20,10 @@ class FragmentActivity : AppCompatActivity() {
     val manager = supportFragmentManager
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment)
 
-        //keyHash 가져오기
-        var keyHash = Utility.getKeyHash(this)
-        Log.d("keyHash", keyHash)
 
 
         val transaction = manager.beginTransaction()
@@ -43,14 +39,10 @@ class FragmentActivity : AppCompatActivity() {
         transaction.commit()
 
 
-
-
-
-
         val bottom_navi_menu = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
         bottom_navi_menu.setOnItemSelectedListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.tab1 -> {
                     val transaction = manager.beginTransaction()
                     transaction.replace(R.id.frameArea, mainFragment)
@@ -58,6 +50,7 @@ class FragmentActivity : AppCompatActivity() {
                     transaction.commit()
                     true
                 }
+
                 R.id.tab2 -> {
                     val transaction = manager.beginTransaction()
                     transaction.replace(R.id.frameArea, likeFragment)
@@ -65,6 +58,7 @@ class FragmentActivity : AppCompatActivity() {
                     transaction.commit()
                     true
                 }
+
                 R.id.tab3 -> {
                     val transaction = manager.beginTransaction()
                     transaction.replace(R.id.frameArea, chattingFragment)
@@ -72,6 +66,7 @@ class FragmentActivity : AppCompatActivity() {
                     transaction.commit()
                     true
                 }
+
                 R.id.tab4 -> {
                     val transaction = manager.beginTransaction()
                     transaction.replace(R.id.frameArea, mypageFragment)
@@ -79,7 +74,8 @@ class FragmentActivity : AppCompatActivity() {
                     transaction.commit()
                     true
                 }
-                else ->false
+
+                else -> false
             }
         }
     }

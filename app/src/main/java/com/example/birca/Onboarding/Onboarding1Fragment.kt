@@ -17,10 +17,10 @@ import com.example.birca.viewModel.OnboardingIdolViewModel
 
 class Onboarding1Fragment : Fragment() {
 
-    private var _binding :FragmentOnboarding1Binding?= null
+    private var _binding: FragmentOnboarding1Binding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel : OnboardingIdolViewModel
+    private lateinit var viewModel: OnboardingIdolViewModel
     private lateinit var onboardingAdapter: OnboardingAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +32,7 @@ class Onboarding1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOnboarding1Binding.inflate(inflater,container,false)
+        _binding = FragmentOnboarding1Binding.inflate(inflater, container, false)
         val view = binding.root
 
         viewModel = ViewModelProvider(requireActivity()).get(OnboardingIdolViewModel::class.java)
@@ -40,7 +40,7 @@ class Onboarding1Fragment : Fragment() {
         onboardingAdapter = OnboardingAdapter(ArrayList())
 
         binding.rvIdolGroups.adapter = onboardingAdapter
-        binding.rvIdolGroups.layoutManager = GridLayoutManager(context,3)
+        binding.rvIdolGroups.layoutManager = GridLayoutManager(context, 3)
 
 
         viewModel.getIdolGroups()
@@ -49,15 +49,16 @@ class Onboarding1Fragment : Fragment() {
             onboardingAdapter = OnboardingAdapter(it)
             binding.rvIdolGroups.adapter = onboardingAdapter
 
-            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick {
 
                 override fun onClick(view: View, position: Int) {
 
-                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+                    val idolGroupName =
+                        viewModel.idolList.value?.get(position)?.koreanName.toString()
 
 
                     viewModel.myIdolGroup.value = idolGroupName
-                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+                    Log.d("idolGroup1", viewModel.myIdolGroup.value!!)
 
                     Log.d("click", "click")
                     val onboarding2Fragment = Onboarding2Fragment()
@@ -80,9 +81,8 @@ class Onboarding1Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
         //전체 버튼 클릭 이벤트
-        binding.btnAllText.setOnClickListener{
+        binding.btnAllText.setOnClickListener {
 
             btnAll()
         }
@@ -102,7 +102,7 @@ class Onboarding1Fragment : Fragment() {
         //솔로 버튼 클릭 이벤트
         binding.btnSoloText.setOnClickListener {
 
-             btnSolo()
+            btnSolo()
         }
 
         //혼성 버튼 클릭 이벤트
@@ -135,15 +135,16 @@ class Onboarding1Fragment : Fragment() {
             onboardingAdapter = OnboardingAdapter(it)
             binding.rvIdolGroups.adapter = onboardingAdapter
 
-            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick {
 
                 override fun onClick(view: View, position: Int) {
 
-                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+                    val idolGroupName =
+                        viewModel.idolList.value?.get(position)?.koreanName.toString()
 
 
                     viewModel.myIdolGroup.value = idolGroupName
-                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+                    Log.d("idolGroup1", viewModel.myIdolGroup.value!!)
 
                     Log.d("click", "click")
                     val onboarding2Fragment = Onboarding2Fragment()
@@ -190,15 +191,16 @@ class Onboarding1Fragment : Fragment() {
             onboardingAdapter = OnboardingAdapter(it)
             binding.rvIdolGroups.adapter = onboardingAdapter
 
-            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick {
 
                 override fun onClick(view: View, position: Int) {
 
-                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+                    val idolGroupName =
+                        viewModel.idolList.value?.get(position)?.koreanName.toString()
 
 
                     viewModel.myIdolGroup.value = idolGroupName
-                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+                    Log.d("idolGroup1", viewModel.myIdolGroup.value!!)
 
                     Log.d("click", "click")
                     val onboarding2Fragment = Onboarding2Fragment()
@@ -238,15 +240,16 @@ class Onboarding1Fragment : Fragment() {
             onboardingAdapter = OnboardingAdapter(it)
             binding.rvIdolGroups.adapter = onboardingAdapter
 
-            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick {
 
                 override fun onClick(view: View, position: Int) {
 
-                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+                    val idolGroupName =
+                        viewModel.idolList.value?.get(position)?.koreanName.toString()
 
 
                     viewModel.myIdolGroup.value = idolGroupName
-                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+                    Log.d("idolGroup1", viewModel.myIdolGroup.value!!)
 
                     Log.d("click", "click")
                     val onboarding2Fragment = Onboarding2Fragment()
@@ -284,15 +287,16 @@ class Onboarding1Fragment : Fragment() {
             onboardingAdapter = OnboardingAdapter(it)
             binding.rvIdolGroups.adapter = onboardingAdapter
 
-            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick {
 
                 override fun onClick(view: View, position: Int) {
 
-                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+                    val idolGroupName =
+                        viewModel.idolList.value?.get(position)?.koreanName.toString()
 
 
                     viewModel.myIdolGroup.value = idolGroupName
-                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+                    Log.d("idolGroup1", viewModel.myIdolGroup.value!!)
 
                     Log.d("click", "click")
                     val onboarding2Fragment = Onboarding2Fragment()
@@ -331,15 +335,16 @@ class Onboarding1Fragment : Fragment() {
             onboardingAdapter = OnboardingAdapter(it)
             binding.rvIdolGroups.adapter = onboardingAdapter
 
-            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick{
+            onboardingAdapter.itemClick = object : OnboardingAdapter.ItemClick {
 
                 override fun onClick(view: View, position: Int) {
 
-                    val idolGroupName= viewModel.idolList.value?.get(position)?.koreanName.toString()
+                    val idolGroupName =
+                        viewModel.idolList.value?.get(position)?.koreanName.toString()
 
 
                     viewModel.myIdolGroup.value = idolGroupName
-                    Log.d("idolGroup1",viewModel.myIdolGroup.value!!)
+                    Log.d("idolGroup1", viewModel.myIdolGroup.value!!)
 
                     Log.d("click", "click")
                     val onboarding2Fragment = Onboarding2Fragment()
