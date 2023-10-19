@@ -24,9 +24,6 @@ class FragmentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment)
 
-        //keyHash 가져오기
-        var keyHash = Utility.getKeyHash(this)
-        Log.d("keyHash", keyHash)
 
 
         val transaction = manager.beginTransaction()
