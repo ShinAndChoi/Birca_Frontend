@@ -46,11 +46,11 @@ class OnboardingCafeOwnerFragment :
     var cafename = ""
     var number = ""
     lateinit var bitmap :Bitmap
-    companion object {
-        private const val PICK_IMAGE_REQUEST = 1
-        private val galleryPermissionCode = 1
-
-    }
+//    companion object {
+//        private const val PICK_IMAGE_REQUEST = 1
+//        private val galleryPermissionCode = 1
+//
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

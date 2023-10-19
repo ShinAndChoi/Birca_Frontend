@@ -9,7 +9,7 @@ class OnboardingActivity : AppCompatActivity() {
 
     val manager = supportFragmentManager
 
-    private lateinit var binding : ActivityOnboardingBinding
+    private lateinit var binding: ActivityOnboardingBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,6 @@ class OnboardingActivity : AppCompatActivity() {
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
 
         val view = binding.root
-
 
 
         val transaction = manager.beginTransaction()
