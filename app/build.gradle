@@ -3,8 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-//Properties properties = new Properties()
-//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def kakao_native_key = properties.getProperty('app_key')
 
 android {
     namespace 'com.example.birca'
@@ -17,10 +19,17 @@ android {
         versionCode 1
         versionName "1.0"
 
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-//        buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties['kakao_native_app_key']
-//        resValue "string", "kakao_oauth_host", properties['kako_oauth_host']
+        buildConfigField "String", "BASE_URL", properties['base_url']
+
+        buildConfigField "String", "KAKAO_APP_KEY", properties['kakao_app_key']
+
+        manifestPlaceholders = [kakao_native_key: kakao_native_key]
+
+
+
     }
 
     buildTypes {
