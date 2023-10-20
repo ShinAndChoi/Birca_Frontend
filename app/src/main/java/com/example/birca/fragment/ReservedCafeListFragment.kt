@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.birca.MainActivity
 import com.example.birca.R
 import com.example.birca.adapter.CafeListAdapter
 import com.example.birca.base.BaseFragment
 import com.example.birca.databinding.FragmentOnboarding1Binding
 import com.example.birca.databinding.FragmentReservedCafeListBinding
 import com.example.birca.model.CafeListResponseModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class ReservedCafeListFragment : Fragment() {
@@ -23,6 +25,12 @@ class ReservedCafeListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val mainActivity = activity as MainActivity
+
+        val bottomNav = mainActivity.findViewById<BottomNavigationView>(R.id.bottom_nav)
+
+        bottomNav.visibility = View.VISIBLE
 
     }
 
@@ -56,6 +64,7 @@ class ReservedCafeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //뒤로가기
         binding.btnBack.setOnClickListener{
             val mainFragment = MainFragment()
             fragmentManager?.beginTransaction()?.apply {
@@ -64,6 +73,18 @@ class ReservedCafeListFragment : Fragment() {
                 commit()
             }
         }
+
+        //날짜 고르기 버튼
+        binding.btnChooseDate.setOnClickListener {
+
+        }
+
+        //장소 고르기 버튼
+        binding.btnChooseLocation.setOnClickListener {
+
+        }
+
+
 
     }
 
