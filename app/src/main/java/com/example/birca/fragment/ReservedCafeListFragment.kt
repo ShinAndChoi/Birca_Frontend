@@ -56,6 +56,14 @@ class ReservedCafeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnBack.setOnClickListener{
+            val mainFragment = MainFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea, mainFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
 
     }
 
