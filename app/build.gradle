@@ -78,6 +78,6 @@ dependencies {
     implementation "com.kakao.sdk:v2-all:2.15.0" // 전체 모듈 설치, 2.11.0 버전부터 지원
 
     //material calendarview
-    implementation 'com.github.prolificinteractive:material-calendarview:2.0'
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
 
 }
