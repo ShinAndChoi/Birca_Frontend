@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.birca.FragmentActivity
 import com.example.birca.MainActivity
 import com.example.birca.R
 import com.example.birca.adapter.CafeListAdapter
@@ -26,9 +27,9 @@ class ReservedCafeListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val mainActivity = activity as MainActivity
+        val fragmentActivity = activity as FragmentActivity
 
-        val bottomNav = mainActivity.findViewById<BottomNavigationView>(R.id.bottom_nav)
+        val bottomNav = fragmentActivity.findViewById<BottomNavigationView>(R.id.bottom_nav)
 
         bottomNav.visibility = View.VISIBLE
 
@@ -81,7 +82,12 @@ class ReservedCafeListFragment : Fragment() {
 
         //장소 고르기 버튼
         binding.btnChooseLocation.setOnClickListener {
-
+            val chooseLocationFragment = ChooseLocationFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea, chooseLocationFragment)
+                addToBackStack(null)
+                commit()
+            }
         }
 
 
