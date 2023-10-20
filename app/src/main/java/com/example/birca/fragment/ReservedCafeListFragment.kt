@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.birca.FragmentActivity
+import com.example.birca.MainActivity
 import com.example.birca.R
 import com.example.birca.adapter.CafeListAdapter
 import com.example.birca.base.BaseFragment
 import com.example.birca.databinding.FragmentOnboarding1Binding
 import com.example.birca.databinding.FragmentReservedCafeListBinding
 import com.example.birca.model.CafeListResponseModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class ReservedCafeListFragment : Fragment() {
@@ -23,6 +26,12 @@ class ReservedCafeListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val fragmentActivity = activity as FragmentActivity
+
+        val bottomNav = fragmentActivity.findViewById<BottomNavigationView>(R.id.bottom_nav)
+
+        bottomNav.visibility = View.VISIBLE
 
     }
 
@@ -55,6 +64,38 @@ class ReservedCafeListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //뒤로가기
+        binding.btnBack.setOnClickListener{
+            val mainFragment = MainFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea, mainFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        //날짜 고르기 버튼
+        binding.btnChooseDate.setOnClickListener {
+            val chooseDateFragment = ChooseDateFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea, chooseDateFragment)
+//            addToBackStack(null)
+                commit()
+            }
+
+        }
+
+        //장소 고르기 버튼
+        binding.btnChooseLocation.setOnClickListener {
+            val chooseLocationFragment = ChooseLocationFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea, chooseLocationFragment)
+//                addToBackStack(null)
+                commit()
+            }
+        }
+
 
 
     }
