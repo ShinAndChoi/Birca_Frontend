@@ -43,7 +43,7 @@ class ChooseLocationFragment : BaseFragment<FragmentChooseLocationBinding>(R.lay
             val reservedCafeListFragment = ReservedCafeListFragment()
             fragmentManager?.beginTransaction()?.apply {
                 replace(R.id.frameArea, reservedCafeListFragment)
-                addToBackStack(null)
+//                addToBackStack(null)
                 commit()
             }
         }

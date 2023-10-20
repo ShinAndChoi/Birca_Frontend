@@ -46,7 +46,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         val reservedCafeListFragment = ReservedCafeListFragment()
         fragmentManager?.beginTransaction()?.apply {
             replace(R.id.frameArea, reservedCafeListFragment)
-            addToBackStack(null)
+//            addToBackStack(null)
             commit()
         }
 
