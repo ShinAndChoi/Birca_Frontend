@@ -51,7 +51,7 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>(R.layout.frag
         binding.calendar.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
 
             binding.btnSelectDateColor.setBackgroundColor(Color.parseColor("#A1B4FF"))
-            Toast.makeText(context,"${year}년 ${month}월 ${dayOfMonth}일",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"${year}년 ${month+1}월 ${dayOfMonth}일",Toast.LENGTH_SHORT).show()
         }
 
     }
