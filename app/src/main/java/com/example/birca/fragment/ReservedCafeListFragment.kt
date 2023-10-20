@@ -77,6 +77,12 @@ class ReservedCafeListFragment : Fragment() {
 
         //날짜 고르기 버튼
         binding.btnChooseDate.setOnClickListener {
+            val chooseDateFragment = ChooseDateFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea, chooseDateFragment)
+//            addToBackStack(null)
+                commit()
+            }
 
         }
 
@@ -85,7 +91,7 @@ class ReservedCafeListFragment : Fragment() {
             val chooseLocationFragment = ChooseLocationFragment()
             fragmentManager?.beginTransaction()?.apply {
                 replace(R.id.frameArea, chooseLocationFragment)
-                addToBackStack(null)
+//                addToBackStack(null)
                 commit()
             }
         }
