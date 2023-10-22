@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 갤러리 사용 권한 요청 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".sharedPreference.MyApplication"
@@ -18,15 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Birca">
         <activity
+            android:name=".FragmentCafeOwnerActivity"
+            android:exported="false" />
+        <activity
             android:name=".base.BaseActivity"
             android:exported="false"
             android:label="@string/title_activity_base"
             android:theme="@style/Theme.Birca" />
-
         <activity
             android:name=".Onboarding.OnboardingActivity"
             android:exported="false" />
-
         <activity
             android:name=".FragmentActivity"
             android:exported="true" />
