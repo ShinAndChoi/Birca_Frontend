@@ -139,12 +139,12 @@ class OnboardingCafeOwnerFragment :
         // Bitmap을 파일로 저장
         val file = File(requireContext().cacheDir, "image.jpg")
         val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
         val byteArray = stream.toByteArray()
         file.writeBytes(byteArray)
 
         val requestBody = file.asRequestBody(mediaType)
-        val imagePart = MultipartBody.Part.createFormData("image", file.name, requestBody)
+        val imagePart = MultipartBody.Part.createFormData("businessLicense", file.name, requestBody)
 
         Log.d("imagePart",imagePart.toString())
         API = RetrofitInstance.retrofitInstance().create(APIS::class.java)
