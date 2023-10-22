@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -21,6 +22,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.viewModelScope
 import com.example.birca.R
 import com.example.birca.base.BaseFragment
+import com.example.birca.databinding.FragmentOnboarding2Binding
 import com.example.birca.databinding.FragmentOnboardingCafeOwnerBinding
 import com.example.birca.retrofit.APIS
 import com.example.birca.retrofit.RetrofitInstance
@@ -37,7 +39,10 @@ import java.io.File
 
 
 class OnboardingCafeOwnerFragment :
-    BaseFragment<FragmentOnboardingCafeOwnerBinding>(R.layout.fragment_onboarding_cafe_owner) {
+   Fragment(){
+
+    private var _binding: FragmentOnboardingCafeOwnerBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var API: APIS
 
@@ -56,8 +61,13 @@ class OnboardingCafeOwnerFragment :
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return super.onCreateView(inflater, container, savedInstanceState)
+
+        _binding = FragmentOnboardingCafeOwnerBinding.inflate(inflater,container,false)
+        val view = binding.root
+
+
+        return view
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,10 +86,9 @@ class OnboardingCafeOwnerFragment :
                         requireContext().contentResolver.openInputStream(uri)
                     )
 
-                    //FAILED BINDER TRANSACTION 에러 방지
-                    if(binding.image!=null) {
-                        binding.image.setImageBitmap(bitmap)
-                    }
+                    binding.textView8.setText("제출 완료!")
+
+
 
                 } else {
                     Log.d("PhotoPicker", "No media selected")
@@ -119,7 +128,7 @@ class OnboardingCafeOwnerFragment :
         // Bitmap을 파일로 저장
         val file = File(requireContext().cacheDir, "image.jpg")
         val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
         val byteArray = stream.toByteArray()
         file.writeBytes(byteArray)
 
