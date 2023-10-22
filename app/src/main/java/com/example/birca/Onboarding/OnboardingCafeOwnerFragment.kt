@@ -75,7 +75,12 @@ class OnboardingCafeOwnerFragment :
                     bitmap = BitmapFactory.decodeStream(
                         requireContext().contentResolver.openInputStream(uri)
                     )
-                    binding.image.setImageBitmap(bitmap)
+
+                    //FAILED BINDER TRANSACTION 에러 방지
+                    if(binding.image!=null) {
+                        binding.image.setImageBitmap(bitmap)
+                    }
+
                 } else {
                     Log.d("PhotoPicker", "No media selected")
                 }
