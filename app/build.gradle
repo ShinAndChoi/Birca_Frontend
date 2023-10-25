@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.birca"
-        minSdk 24
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -76,4 +76,8 @@ dependencies {
 
     //kakao
     implementation "com.kakao.sdk:v2-all:2.15.0" // 전체 모듈 설치, 2.11.0 버전부터 지원
+
+    //material calendarview
+    implementation 'com.github.prolificinteractive:material-calendarview:1.6.0'
+
 }
