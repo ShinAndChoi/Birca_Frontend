@@ -3,6 +3,7 @@ package com.example.birca.fragment
 import android.graphics.Color
 import android.os.Bundle
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.View
@@ -90,12 +91,34 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>(R.layout.frag
 
 //            var dateList = ArrayList<CalendarDay>()
 //            dateList.add(date)
-//            Log.d("dateList",dateList.toString())
+            val year = date.year
+            val month = date.month+1
+            val dayOfMonth = date.day
+
+            var selectedDate = ""
+
+            selectedDate = dateToString(year,month,dayOfMonth)
+            Log.d("selectedDate",selectedDate)
 
         }
 
 
 
+    }
+
+    fun dateToString(y : Int, m : Int, d : Int) : String {
+        var year = y.toString()
+        var month = m.toString()
+        var day = d.toString()
+        if(m<10) {
+            month = "0${m}"
+        }
+
+        if (d<10){
+            day = "0${d}"
+        }
+
+        return "${year}-${month}-${day}"
     }
 
 
