@@ -17,6 +17,8 @@ import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView.SELECTION_MODE_MULTIPLE
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView.SELECTION_MODE_RANGE
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView.SELECTION_MODE_SINGLE
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter
 import java.util.Calendar
@@ -73,7 +75,7 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>(R.layout.frag
 
         binding.calendar.addDecorator(beforeTodayDecorator)
 
-        binding.calendar.selectionMode = SELECTION_MODE_MULTIPLE
+        binding.calendar.selectionMode = SELECTION_MODE_SINGLE
 
         binding.calendar.setOnDateChangedListener { widget, date, selected ->
 
@@ -84,6 +86,7 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>(R.layout.frag
             val dayOfMonth = date.day
 
             var selectedDate = ""
+
 
             selectedDate = dateToString(year,month,dayOfMonth)
 //            viewModel.addDateList(selectedDate)
