@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.viewModelScope
+import com.example.birca.FragmentCafeOwnerActivity
 import com.example.birca.R
 import com.example.birca.base.BaseFragment
 import com.example.birca.databinding.FragmentOnboarding2Binding
@@ -153,6 +154,9 @@ class OnboardingCafeOwnerFragment :
                                 "postCafeOwnerInfo : ",
                                 " success , ${response.body().toString()}"
                             )
+
+                            val intent = Intent(context,FragmentCafeOwnerActivity::class.java)
+                            startActivity(intent)
                         } else {
 
                             Log.d(
