@@ -17,14 +17,13 @@ import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView.SELECTION_MODE_MULTIPLE
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView.SelectionMode
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter
-import java.time.LocalDate
 import java.util.Calendar
 
 
 class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>(R.layout.fragment_choose_date) {
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +43,7 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>(R.layout.frag
     ): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
 
-
+//
 
     }
 
@@ -53,6 +52,7 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>(R.layout.frag
 
         super.onViewCreated(view, savedInstanceState)
 
+
         var startTimeCalendar = Calendar.getInstance()
 //        var endTimeCalendar = Calendar.getInstance()
 
@@ -60,18 +60,6 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>(R.layout.frag
         val currentMonth = startTimeCalendar.get(Calendar.MONTH)
         val currentDate = startTimeCalendar.get(Calendar.DATE)
 
-
-//        endTimeCalendar.set(Calendar.YEAR, currentYear+1)
-
-
-        binding.btnBack.setOnClickListener {
-            val reservedCafeListFragment = ReservedCafeListFragment()
-            fragmentManager?.beginTransaction()?.apply {
-                replace(R.id.frameArea, reservedCafeListFragment)
-//                addToBackStack(null)
-                commit()
-            }
-        }
 
         binding.calendar.setTitleFormatter(MonthArrayTitleFormatter(resources.getTextArray(R.array.custom_months)))
         binding.calendar.setWeekDayFormatter(ArrayWeekDayFormatter(resources.getTextArray(R.array.custom_weekdays)))
@@ -98,9 +86,25 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>(R.layout.frag
             var selectedDate = ""
 
             selectedDate = dateToString(year,month,dayOfMonth)
-            Log.d("selectedDate",selectedDate)
+//            viewModel.addDateList(selectedDate)
+//            Log.d("dateList",viewModel.dateList.value.toString())
+            Log.d("click",selectedDate)
+
 
         }
+
+
+        binding.btnBack.setOnClickListener {
+            val reservedCafeListFragment = ReservedCafeListFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea, reservedCafeListFragment)
+//                addToBackStack(null)
+                commit()
+            }
+        }
+
+
+
 
 
 
@@ -129,7 +133,7 @@ class BeforeTodayDecorator(min:CalendarDay):DayViewDecorator {
 
     val minDay = min
     override fun shouldDecorate(day: CalendarDay?): Boolean {
-        return (day?.month!! == minDay.month && day.day < minDay.day)
+        return (day?.month!! <= minDay.month && day.day < minDay.day) ||(day?.month!! < minDay.month)
     }
     override fun decorate(view: DayViewFacade?) {
         view?.addSpan(object:ForegroundColorSpan(Color.parseColor("#d2d2d2")){})
